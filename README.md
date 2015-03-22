@@ -4,6 +4,10 @@ Entrance script is `audit.py`.
 
 `DTAudit` folder contains source code for sub modules.
 
+Place seeds URLs file at `data/seeds.json` and issue the following command to run the scanner:
+
+    python audit.py
+
 ## Call stack
 
 1. `audit.py`
