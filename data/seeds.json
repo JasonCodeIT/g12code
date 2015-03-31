@@ -1,13 +1,14 @@
-[{
-    "http://www.google.com":{
-        "method":"GET",
-        "params":[]
-    },
-    "http://www.yahoo.com":{
-        "method":"GET",
-        "params":{
-            "name":"Mr. Smart",
-            "addr":"Planet Mars"
-        }
+[
+  {
+    "/page.html": {
+      "type": "GET", 
+      "param": "MEOW"
     }
-}]
+  }, 
+  {
+    "/page.html": {
+      "type": "GET", 
+      "param": "MEOW2"
+    }
+  }
+]
