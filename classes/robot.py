@@ -40,7 +40,10 @@ class Robot(object):
         '''
         spider = ScannerSpider(url=self.start_url)
         crawler = Crawler(Settings())
-        crawler.settings.setdict({'FEED_URI': "data/items.json"})
+        crawler.settings.setdict({
+            'FEED_URI': "data/items.json",
+            'AJAXCRAWL_ENABLED': True,
+            })
         crawler.signals.connect(self.spider_closing, signal=signals.spider_closed)
         crawler.configure()
         crawler.crawl(spider)

@@ -10,7 +10,7 @@ Entrance script is `audit.py`.
 
 `scrape` folder contains files for scrapy (spiders, items)
 
-Modify `audit.py` with the start URL (e.g. `Robot("http://www.roboform.com/")`) and run the script:
+Modify `scrape/settings.py` with the start URL and crawl depth and run the script:
 
     python audit.py
 
