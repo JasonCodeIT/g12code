@@ -27,6 +27,9 @@ class Robot(object):
         self.depth = depth          # int, optional
         self.max_urls = max_urls    # int, optional
 
+    def spider_closing(spider):
+        reactor.stop()
+
     def crawl(self):
         '''
             Crawls using scrapy module
@@ -38,6 +41,7 @@ class Robot(object):
         spider = ScannerSpider(url=self.start_url)
         crawler = Crawler(Settings())
         crawler.settings.setdict({'FEED_URI': "data/items.json"})
+        crawler.signals.connect(self.spider_closing, signal=signals.spider_closed)
         crawler.configure()
         crawler.crawl(spider)
         crawler.start()
