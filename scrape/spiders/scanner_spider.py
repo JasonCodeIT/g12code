@@ -1,9 +1,10 @@
 __author__ = 'Jason Poh'
 import re
 
+from scrape.settings import FORM_DATA
 from scrapy.contrib.spiders import CrawlSpider, Rule
 from scrapy.contrib.linkextractors.lxmlhtml import LxmlLinkExtractor
-from scrapy.http import Request
+from scrapy.http import Request, FormRequest
 from scrape.items import FormItem
 from urlparse import urlparse
 from scrapy import log
@@ -39,11 +40,16 @@ class ScannerSpider(CrawlSpider):
         return link
 
     def parse_start_url(self, response):
-        return self.parse_url(response)
+        if FORM_DATA is not None:
+            return [FormRequest.from_response(response,
+                    formdata=FORM_DATA,
+                    callback=self.parse_url)]
+        else:
+            return self.parse_url(response)
 
     def _process_headers(self, response):
         form = FormItem()
-        form['url'] = [re.sub(r'^www\.', '', urlparse(response.url).hostname)]
+        form['url'] = response.url
         form['method'] = "Header"
         form['form_items'] = response.headers.keys()
         return form
@@ -70,17 +76,41 @@ class ScannerSpider(CrawlSpider):
         headers = self._process_headers(response)
         yield headers
 
+        # Extracts all query strings
+        if "?" in response.url:
+            regex = "\\?([a-zA-Z0-9_]+=[/a-zA-Z0-9_\\-\\.]+)(&[a-zA-Z0-9_]+=[/a-zA-Z0-9_\\-\\.]+)+"
+            rg = re.compile(regex, re.IGNORECASE|re.DOTALL)
+            mm = rg.findall(response.url)
+            mydict = {}
+            for m in mm:
+                querystring = "".join(m)
+                qs_url = response.url.replace("?"+querystring, "", 1)
+                querystring_list = querystring.split("&")
+                form = FormItem()
+                form['url'] = qs_url
+                form['method'] = 'GET'
+                for qs in querystring_list:
+                    tmp_qs = qs.split("=")
+                    if len(tmp_qs) == 2:
+                        qs_key = tmp_qs[0]
+                        qs_val = tmp_qs[1]
+                        mydict[qs_key] = qs_val
+                form['form_items'] = mydict
+                yield form
+
         # Process all script tags
         for sel in response.xpath('//script'):
-            script_url = self.__to_absolute_url(response.url, sel.xpath('@src').extract()[0])
-            yield Request(script_url, callback=self.parse_url)
+            url_list = sel.xpath('@src').extract()
+            if len(url_list) > 0:
+                script_url = self.__to_absolute_url(response.url, url_list[0])
+                yield Request(script_url, callback=self.parse_url)
 
         # Extracts url from possible ajax query in javascript file
         for body_line in response.body.lower().split(";"):
             if "open" not in body_line or "get" not in body_line:
                 continue
             #matches blah/moreblah/a/b.php?queryString=
-            rg = re.compile("([a-zA-Z0-9_]+)(/[a-zA-Z0-9_]+)+(\\.[a-zA-Z]+\\?[a-zA-Z0-9_]+)",re.IGNORECASE|re.DOTALL)
+            rg = re.compile("([a-zA-Z0-9_]+)(/[a-zA-Z0-9_]+)+(\\.[a-zA-Z]+\\?[a-zA-Z0-9_]+)", re.IGNORECASE|re.DOTALL)
             mm = rg.findall(body_line)
             for m in mm:
                 ajax_url = "".join(m)

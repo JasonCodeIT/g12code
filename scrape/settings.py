@@ -19,4 +19,8 @@ USER_AGENT = 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML
 
 # Edit Config Here
 DEPTH_LIMIT = 0  # 0 = no limit
-START_URL = "https://app3.com"
+
+#app6
+START_URL = "https://app6.com/zimplit.php"
+FORM_DATA = {'username': 'admin', 'password': 'admin'} #None or Dictionary to login
+
