@@ -16,7 +16,7 @@ class ScannerSpider(CrawlSpider):
 
     # matching app1.com/calendar.php?date= causing infinite follow
     # matching logout pages so scrapy will not logout from a session
-    re1 = '=[1-2][0-9]{9}|logout|page='
+    re1 = '=[1-2][0-9]{9}|logout|page=[0-9]{2}|upgrader|updater|delete|remove'
 
     rules = (
         Rule(LxmlLinkExtractor(unique=True, deny=re1), callback='parse_item', follow=False),
@@ -99,7 +99,8 @@ class ScannerSpider(CrawlSpider):
                                            'dir,',
                                            'file']
                 yield form_item
-            yield Request(script_url, callback=self.parse_item)
+            if self._filter_requests(script_url):
+                yield Request(script_url, callback=self.parse_item)
 
 
         # Process all external script tags
@@ -107,7 +108,8 @@ class ScannerSpider(CrawlSpider):
             url_list = sel.xpath('@src').extract()
             if len(url_list) > 0:
                 script_url = self.__to_absolute_url(response.url, url_list[0])
-                yield Request(script_url, callback=self.parse_item)
+                if self._filter_requests(script_url):
+                    yield Request(script_url, callback=self.parse_item)
 
         # Process all anchor tags
         match_url_re = "<a href=[\"|']([a-zA-Z:/\\.0-9?=&;-]+)"
@@ -116,7 +118,8 @@ class ScannerSpider(CrawlSpider):
         for m in mm:
             ajax_url = "".join(m)
             script_url = self.__to_absolute_url(response.url, ajax_url)
-            yield Request(script_url, callback=self.parse_item)
+            if self._filter_requests(script_url):
+                    yield Request(script_url, callback=self.parse_item)
 
 
         # Extracts url from possible ajax query in javascript file
@@ -183,3 +186,12 @@ class ScannerSpider(CrawlSpider):
         cookie_item['method'] = 'COOKIE'
         cookie_item['form_items'] = cookie.split(";")
         return cookie_item
+
+    def _filter_requests(self, url):
+        pass_test = True
+        rg = re.compile(self.re1, re.IGNORECASE|re.DOTALL)
+        mm = rg.findall(url)
+        for m in mm:
+            querystring = "".join(m)
+            pass_test = False
+        return pass_test

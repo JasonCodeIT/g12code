@@ -45,5 +45,14 @@ DEPTH_LIMIT = 0  # 0 = no limit
 # FORM_DATA = {'user': 'admin', 'password': 'admin'}
 
 #app8 admin
-START_URL = "https://app8.com/upload/admin/"
-FORM_DATA = {'username': 'admin', 'password': 'admin'}
+# START_URL = "https://app8.com/upload/admin/"
+# FORM_DATA = {'username': 'admin', 'password': 'admin'}
+
+#app9 admin
+START_URL = "https://app9.com/index-test.php/site/login"
+FORM_DATA = {"LoginForm[username]": "admin", "LoginForm[password]": "admin"}
+
+#app9 user
+# START_URL = "https://app9.com/index-test.php/site/login"
+# FORM_DATA = {"LoginForm[username]": "test", "LoginForm[password]": "test"}
+
