@@ -15,10 +15,19 @@ BOT_NAME = 'scrape'
 SPIDER_MODULES = ['scrape.spiders']
 NEWSPIDER_MODULE = 'scrape.spiders'
 
-USER_AGENT = 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.60 Safari/537.36'
+CONTENT_TYPE = None;
 
 # Edit Config Here
 DEPTH_LIMIT = 0  # 0 = no limit
+
+#app1_admin
+# START_URL = "https://app1.com/admin/index.php?page=login"
+# FORM_DATA = {'adminname': 'admin', 'password': 'admin'}
+
+#app1 user
+# START_URL = "https://app1.com/users/login.php"
+# FORM_DATA = {'username': 'bryce', 'password': 'bryce'} #None or Dictionary to
+# CONTENT_TYPE = "application/x-www-form-urlencoded"
 
 #app6
 START_URL = "https://app6.com/zimplit.php"

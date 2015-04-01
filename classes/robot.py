@@ -38,11 +38,18 @@ class Robot(object):
 
             :return:None
         '''
+
+        # delete existing file, if any
+        if os.path.isfile("data/items.json"):
+            os.remove("data/items.json")
+
         spider = ScannerSpider(url=self.start_url)
         crawler = Crawler(Settings())
         crawler.settings.setdict({
             'FEED_URI': "data/items.json",
             'AJAXCRAWL_ENABLED': True,
+            'COOKIES_DEBUG': True,
+            'USER_AGAENT': "Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.60 Safari/537.36"
             })
         crawler.signals.connect(self.spider_closing, signal=signals.spider_closed)
         crawler.configure()

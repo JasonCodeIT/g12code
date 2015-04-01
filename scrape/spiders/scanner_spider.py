@@ -1,7 +1,8 @@
 __author__ = 'Jason Poh'
 import re
+import urllib
 
-from scrape.settings import FORM_DATA
+from scrape.settings import FORM_DATA, CONTENT_TYPE
 from scrapy.contrib.spiders import CrawlSpider, Rule
 from scrapy.contrib.linkextractors.lxmlhtml import LxmlLinkExtractor
 from scrapy.http import Request, FormRequest
@@ -14,13 +15,15 @@ class ScannerSpider(CrawlSpider):
     name = "scanner"
 
     # matching app1.com/calendar.php?date= causing infinite follow
-    re1 = '.*?(calendar\\.php)(\\?)(date)(=)'
+    # matching logout pages so scrapy will not logout from a session
+    re1 = '=[1-2][0-9]{9}|logout'
 
     rules = (
-        Rule(LxmlLinkExtractor(unique=True, deny=re1), callback='parse_url', follow=True),
+        Rule(LxmlLinkExtractor(unique=True, deny=re1), callback='parse_item', follow=True),
     )
     allowed_domains = None
     start_urls = []
+    handle_httpstatus_list = [404, 500, 301, 302]
 
     def __init__(self, **kw):
         super(ScannerSpider, self).__init__(**kw)
@@ -34,18 +37,24 @@ class ScannerSpider(CrawlSpider):
         '''
         Convert relative URL to absolute URL
         '''
-
         import urlparse
         link = urlparse.urljoin(base_url, link)
         return link
 
     def parse_start_url(self, response):
-        if FORM_DATA is not None:
-            return [FormRequest.from_response(response,
-                    formdata=FORM_DATA,
-                    callback=self.parse_url)]
+        if str(len(FORM_DATA)) > 0:
+            self.log("Starting crawling WITH login credentials...")
+            if CONTENT_TYPE is None or len(CONTENT_TYPE) < 1:
+                return [FormRequest.from_response(response, formdata=FORM_DATA, callback=self.parse_item)]
+
+            return Request(self.start_urls[0],
+                      self.parse_item,
+                      method="POST",
+                      body=urllib.urlencode(FORM_DATA),
+                      headers={'Content-Type': CONTENT_TYPE})
         else:
-            return self.parse_url(response)
+            self.log("Starting crawling WITHOUT login credentials...")
+            return self.parse_item(response)
 
     def _process_headers(self, response):
         form = FormItem()
@@ -54,12 +63,14 @@ class ScannerSpider(CrawlSpider):
         form['form_items'] = response.headers.keys()
         return form
 
-    def _process_form(self, sel):
+    def _process_form(self, sel, response):
         form = FormItem()
         # Extracts form action URL
         form['url'] = sel.xpath('@action').extract()
         if len(form['url']) == 0:
-            form['url'] = ["/"]
+            form['url'] = response.url
+        else:
+            form['url'] = self.__to_absolute_url(response.url, form['url'][0])
 
         # Extracts the method used in form (i.e. GET or POST)
         form['method'] = sel.xpath('@method').extract()
@@ -71,14 +82,14 @@ class ScannerSpider(CrawlSpider):
         form['form_items'] = params
         return form
 
-    def parse_url(self, response):
+    def parse_item(self, response):
         # Extracts all headers
         headers = self._process_headers(response)
         yield headers
 
         # Extracts all query strings
         if "?" in response.url:
-            regex = "\\?([a-zA-Z0-9_]+=[/a-zA-Z0-9_\\-\\.]+)(&[a-zA-Z0-9_]+=[/a-zA-Z0-9_\\-\\.]+)+"
+            regex = "\\?([a-zA-Z0-9_]+=[/a-zA-Z0-9_\\-\\.]+)(&[a-zA-Z0-9_]+=[/a-zA-Z0-9_\\-\\.]+)*"
             rg = re.compile(regex, re.IGNORECASE|re.DOTALL)
             mm = rg.findall(response.url)
             mydict = {}
@@ -103,7 +114,7 @@ class ScannerSpider(CrawlSpider):
             url_list = sel.xpath('@src').extract()
             if len(url_list) > 0:
                 script_url = self.__to_absolute_url(response.url, url_list[0])
-                yield Request(script_url, callback=self.parse_url)
+                yield Request(script_url, callback=self.parse_item)
 
         # Extracts url from possible ajax query in javascript file
         for body_line in response.body.lower().split(";"):
@@ -123,6 +134,6 @@ class ScannerSpider(CrawlSpider):
 
         # Process all form tags
         for sel in response.xpath('//form'):
-            form_input = self._process_form(sel)
+            form_input = self._process_form(sel, response)
             yield form_input
 
