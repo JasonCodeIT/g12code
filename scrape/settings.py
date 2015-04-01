@@ -31,7 +31,7 @@ DEPTH_LIMIT = 0  # 0 = no limit
 # CONTENT_TYPE = "application/x-www-form-urlencoded"
 
 #app3 nologin
-# START_URL = "https://app3.com"
+START_URL = "https://app3.com"
 
 #app5 nologin
 # START_URL = "https://app5.com"
@@ -49,10 +49,13 @@ DEPTH_LIMIT = 0  # 0 = no limit
 # FORM_DATA = {'username': 'admin', 'password': 'admin'}
 
 #app9 admin
-START_URL = "https://app9.com/index-test.php/site/login"
-FORM_DATA = {"LoginForm[username]": "admin", "LoginForm[password]": "admin"}
+# START_URL = "https://app9.com/index-test.php/site/login"
+# FORM_DATA = {"LoginForm[username]": "admin", "LoginForm[password]": "admin"}
 
 #app9 user
 # START_URL = "https://app9.com/index-test.php/site/login"
 # FORM_DATA = {"LoginForm[username]": "test", "LoginForm[password]": "test"}
 
+#app11 user
+START_URL = "https://app11.com/ajax_login.php"
+FORM_DATA = {'username': 'admin', 'password': 'admin'}
