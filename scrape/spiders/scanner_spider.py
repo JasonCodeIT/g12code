@@ -16,14 +16,14 @@ class ScannerSpider(CrawlSpider):
 
     # matching app1.com/calendar.php?date= causing infinite follow
     # matching logout pages so scrapy will not logout from a session
-    re1 = '=[1-2][0-9]{9}|logout'
+    re1 = '=[1-2][0-9]{9}|logout|page='
 
     rules = (
-        Rule(LxmlLinkExtractor(unique=True, deny=re1), callback='parse_item', follow=True),
+        Rule(LxmlLinkExtractor(unique=True, deny=re1), callback='parse_item', follow=False),
     )
     allowed_domains = None
     start_urls = []
-    handle_httpstatus_list = [404, 500, 301, 302]
+    handle_httpstatus_list = [500, 301, 302]
 
     def __init__(self, **kw):
         super(ScannerSpider, self).__init__(**kw)
@@ -35,7 +35,7 @@ class ScannerSpider(CrawlSpider):
 
     # Entry point of spider
     def parse_start_url(self, response):
-        if str(len(FORM_DATA)) > 0:
+        if FORM_DATA is not None and str(len(FORM_DATA)) > 0:
             self.log("Starting crawling WITH login credentials...")
             if CONTENT_TYPE is None or len(CONTENT_TYPE) < 1:
                 return [FormRequest.from_response(response,
@@ -84,12 +84,40 @@ class ScannerSpider(CrawlSpider):
                 form['form_items'] = mydict
                 yield form
 
-        # Process all script tags
+        # Process all inline script tags
+        match_url_re = "['|\"]([a-zA-Z0-9_-]+[/a-zA-Z0-9_\\-\\.]*[?][/a-zA-Z0-9_\\-&=]*)['|\"]"
+        rg = re.compile(match_url_re, re.IGNORECASE | re.DOTALL)
+        mm = rg.findall(response.body)
+        for m in mm:
+            ajax_url = "".join(m)
+            script_url = self.__to_absolute_url(response.url, ajax_url)
+            if "file" in script_url or "dir" in script_url:
+                form_item = FormItem()
+                form_item['url'] = script_url
+                form_item['method'] = 'POST'
+                form_item['form_items'] = ['directory',
+                                           'dir,',
+                                           'file']
+                yield form_item
+            yield Request(script_url, callback=self.parse_item)
+
+
+        # Process all external script tags
         for sel in response.xpath('//script'):
             url_list = sel.xpath('@src').extract()
             if len(url_list) > 0:
                 script_url = self.__to_absolute_url(response.url, url_list[0])
                 yield Request(script_url, callback=self.parse_item)
+
+        # Process all anchor tags
+        match_url_re = "<a href=[\"|']([a-zA-Z:/\\.0-9?=&;-]+)"
+        rg = re.compile(match_url_re, re.IGNORECASE | re.DOTALL)
+        mm = rg.findall(response.body)
+        for m in mm:
+            ajax_url = "".join(m)
+            script_url = self.__to_absolute_url(response.url, ajax_url)
+            yield Request(script_url, callback=self.parse_item)
+
 
         # Extracts url from possible ajax query in javascript file
         for body_line in response.body.lower().split(";"):
@@ -147,6 +175,8 @@ class ScannerSpider(CrawlSpider):
         return form
 
     def _process_cookie(self, response):
+        if "Cookie" not in response.request.headers:
+            return None
         cookie = response.request.headers['Cookie']
         cookie_item = FormItem()
         cookie_item['url'] = response.request.url

@@ -16,6 +16,7 @@ SPIDER_MODULES = ['scrape.spiders']
 NEWSPIDER_MODULE = 'scrape.spiders'
 
 CONTENT_TYPE = None
+FORM_DATA = None
 
 # Edit Config Here
 DEPTH_LIMIT = 0  # 0 = no limit
@@ -26,10 +27,23 @@ DEPTH_LIMIT = 0  # 0 = no limit
 
 #app1 user
 # START_URL = "https://app1.com/users/login.php"
-# FORM_DATA = {'username': 'bryce', 'password': 'bryce'} #None or Dictionary to
+# FORM_DATA = {'username': 'bryce', 'password': 'bryce'}
 # CONTENT_TYPE = "application/x-www-form-urlencoded"
 
-#app6
-START_URL = "https://app6.com/zimplit.php"
-FORM_DATA = {'username': 'admin', 'password': 'admin'} #None or Dictionary to login
+#app3 nologin
+# START_URL = "https://app3.com"
 
+#app5 nologin
+# START_URL = "https://app5.com"
+
+#app6
+# START_URL = "https://app6.com/zimplit.php"
+# FORM_DATA = {'username': 'admin', 'password': 'admin'}
+
+#app7 admin
+# START_URL = "https://app7.com/oc-admin/index.php?page=login"
+# FORM_DATA = {'user': 'admin', 'password': 'admin'}
+
+#app8 admin
+START_URL = "https://app8.com/upload/admin/"
+FORM_DATA = {'username': 'admin', 'password': 'admin'}
