@@ -15,7 +15,7 @@ BOT_NAME = 'scrape'
 SPIDER_MODULES = ['scrape.spiders']
 NEWSPIDER_MODULE = 'scrape.spiders'
 
-CONTENT_TYPE = None;
+CONTENT_TYPE = None
 
 # Edit Config Here
 DEPTH_LIMIT = 0  # 0 = no limit

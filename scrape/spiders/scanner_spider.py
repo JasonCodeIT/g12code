@@ -33,19 +33,15 @@ class ScannerSpider(CrawlSpider):
         self.start_urls = [url]
         self.allowed_domains = [re.sub(r'^www\.', '', urlparse(url).hostname)]
 
-    def __to_absolute_url(self, base_url, link):
-        '''
-        Convert relative URL to absolute URL
-        '''
-        import urlparse
-        link = urlparse.urljoin(base_url, link)
-        return link
-
+    # Entry point of spider
     def parse_start_url(self, response):
         if str(len(FORM_DATA)) > 0:
             self.log("Starting crawling WITH login credentials...")
             if CONTENT_TYPE is None or len(CONTENT_TYPE) < 1:
-                return [FormRequest.from_response(response, formdata=FORM_DATA, callback=self.parse_item)]
+                return [FormRequest.from_response(response,
+                                                  formdata=FORM_DATA,
+                                                  callback=self.parse_item,
+                                                 )]
 
             return Request(self.start_urls[0],
                       self.parse_item,
@@ -56,33 +52,12 @@ class ScannerSpider(CrawlSpider):
             self.log("Starting crawling WITHOUT login credentials...")
             return self.parse_item(response)
 
-    def _process_headers(self, response):
-        form = FormItem()
-        form['url'] = response.url
-        form['method'] = "Header"
-        form['form_items'] = response.headers.keys()
-        return form
-
-    def _process_form(self, sel, response):
-        form = FormItem()
-        # Extracts form action URL
-        form['url'] = sel.xpath('@action').extract()
-        if len(form['url']) == 0:
-            form['url'] = response.url
-        else:
-            form['url'] = self.__to_absolute_url(response.url, form['url'][0])
-
-        # Extracts the method used in form (i.e. GET or POST)
-        form['method'] = sel.xpath('@method').extract()
-        if len(form['method']) == 0:
-            form['method'] = ["GET"]
-
-        # Extracts all params from all inputs in form
-        params = sel.xpath('//*/@name').extract()
-        form['form_items'] = params
-        return form
-
+    # Subsequent crawling in spider
     def parse_item(self, response):
+        # Extracts all Cookies
+        cookie_item = self._process_cookie(response)
+        yield cookie_item
+
         # Extracts all headers
         headers = self._process_headers(response)
         yield headers
@@ -120,8 +95,8 @@ class ScannerSpider(CrawlSpider):
         for body_line in response.body.lower().split(";"):
             if "open" not in body_line or "get" not in body_line:
                 continue
-            #matches blah/moreblah/a/b.php?queryString=
-            rg = re.compile("([a-zA-Z0-9_]+)(/[a-zA-Z0-9_]+)+(\\.[a-zA-Z]+\\?[a-zA-Z0-9_]+)", re.IGNORECASE|re.DOTALL)
+            # Matches blah/moreblah/a/b.php?queryString=
+            rg = re.compile("([a-zA-Z0-9_]+)(/[a-zA-Z0-9_]+)+(\\.[a-zA-Z]+\\?[a-zA-Z0-9_]+)", re.IGNORECASE | re.DOTALL)
             mm = rg.findall(body_line)
             for m in mm:
                 ajax_url = "".join(m)
@@ -137,3 +112,44 @@ class ScannerSpider(CrawlSpider):
             form_input = self._process_form(sel, response)
             yield form_input
 
+    def __to_absolute_url(self, base_url, link):
+        '''
+        Convert relative URL to absolute URL
+        '''
+        import urlparse
+        link = urlparse.urljoin(base_url, link)
+        return link
+
+    def _process_headers(self, response):
+        form = FormItem()
+        form['url'] = response.url
+        form['method'] = "Header"
+        form['form_items'] = response.headers.keys()
+        return form
+
+    def _process_form(self, sel, response):
+        form = FormItem()
+        # Extracts form action URL
+        form['url'] = sel.xpath('@action').extract()
+        if len(form['url']) == 0:
+            form['url'] = response.url
+        else:
+            form['url'] = self.__to_absolute_url(response.url, form['url'][0])
+
+        # Extracts the method used in form (i.e. GET or POST)
+        form['method'] = sel.xpath('@method').extract()
+        if len(form['method']) == 0:
+            form['method'] = ["GET"]
+
+        # Extracts all params from all inputs in form
+        params = sel.xpath('//*/@name').extract()
+        form['form_items'] = params
+        return form
+
+    def _process_cookie(self, response):
+        cookie = response.request.headers['Cookie']
+        cookie_item = FormItem()
+        cookie_item['url'] = response.request.url
+        cookie_item['method'] = 'COOKIE'
+        cookie_item['form_items'] = cookie.split(";")
+        return cookie_item
