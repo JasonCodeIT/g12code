@@ -14,4 +14,5 @@ class FormItem(scrapy.Item):
     target_url = scrapy.Field()
     form_items = scrapy.Field()
     method = scrapy.Field()
+    file_items = scrapy.Field()
     pass

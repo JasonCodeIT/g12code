@@ -177,6 +177,13 @@ class ScannerSpider(CrawlSpider):
         # Extracts all params from all inputs in form
         params = sel.xpath('//*/@name').extract()
         form['form_items'] = params
+        # return form
+
+        # Extracts all params from all file inputs in form
+        params = sel.xpath('//input[@type=\'file\']/@name').extract()
+        if len(params) > 0:
+            form['file_items'] = params
+
         return form
 
     def _process_cookie(self, response):
