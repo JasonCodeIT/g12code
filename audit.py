@@ -1,13 +1,20 @@
 from DTAudit import DTAuditor
+from DTAudit.auditor import auditor
+
 
 def main():
+    audit = DTAuditor(seeds='data/seeds.json',
+                        endpoints='output/endpoints.json',
+                        payloads='output/payloads.json',
+                        exploits='output/exploits.json',
+                        script='output/scripts.json')
+    audit.launch()
 
-    auditor = DTAuditor(seeds = 'data/seeds.json',
-            endpoints = 'output/endpoints.json',
-            payloads = 'output/payloads.json',
-            exploits = 'output/expoits.json',
-            script = 'output/scripts.json')
 
-    auditor.launch()
+def test_auditor():
+    worker = auditor()
 
-main()
+    worker.launch(['output/endpoints.json', 'output/payloads.json'], 'output/exploits.json')
+
+
+test_auditor()
