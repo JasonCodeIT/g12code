@@ -5,7 +5,7 @@ import random
 
 #open json file
 
-inputFileName = "exploits.json"
+inputFileName = "../data/exploits.json"
 scriptFolder = "scripts"+str(int(time.time()))
 if not os.path.exists(scriptFolder):
     os.makedirs(scriptFolder)
@@ -45,7 +45,16 @@ for exploit in inputData:
             script.write("driver.find_element_by_name('"+fieldName+"').send_keys(Keys.RETURN)\n\n")
         if (firstLink):
             scriptFile.write("url:"+url+" =>"+scriptName+"\n")
-            firstLink = False;
+            firstLink = False
+        fileFields = step["fileFields"]
+        if fileFields:
+            fileFieldName = ""
+            filePath = ""
+            for key, value in fileFields.items():
+                fileFieldName = key
+                filePath = fileFields.get(key)
+                script.write("driver.find_element_by_name('"+fileFieldName+"').send_keys('"+filePath+"')\n\n")
+
 
     script.close()
 
