@@ -6,13 +6,11 @@ import random
 #open json file
 
 inputFileName = "exploits.json"
-#scriptFileName = "scriptNames.txt"
 scriptFolder = "scripts"+str(int(time.time()))
 if not os.path.exists(scriptFolder):
     os.makedirs(scriptFolder)
-#scriptFile = open(os.path.join(scriptFolder,scriptFileName),'a')
-
-#scriptFile.write("url:"+url+" =>"+scriptName+"\n")
+scriptFileName = "scriptNames.txt"
+scriptFile = open(os.path.join(scriptFolder,scriptFileName),'a')
 
 
 with open(inputFileName) as inputFile:
@@ -32,6 +30,7 @@ for exploit in inputData:
     script.write("driver = webdriver.Firefox()\n\n")
 
     exploitSteps = exploit["exploit"]
+    firstLink = True
     for step in exploitSteps:
         url = step["url"]
         formFields = step["formFields"]
@@ -44,9 +43,11 @@ for exploit in inputData:
                 fieldValue = formFields.get(key)
                 script.write("driver.find_element_by_name('"+fieldName+"').send_keys('"+fieldValue+"')\n")
             script.write("driver.find_element_by_name('"+fieldName+"').send_keys(Keys.RETURN)\n\n")
+        if (firstLink):
+            scriptFile.write("url:"+url+" =>"+scriptName+"\n")
+            firstLink = False;
 
     script.close()
 
-
-#scriptFile.write("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
-#scriptFile.close()
+scriptFile.write("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
+scriptFile.close()
