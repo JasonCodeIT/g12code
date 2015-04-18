@@ -2,65 +2,52 @@ import json
 import time
 import os
 import random
-import re
 
 #open json file
 
-inputFileName = "exploitData.json"
+inputFileName = "exploits.json"
+scriptFolder = "scripts"+str(int(time.time()))
+if not os.path.exists(scriptFolder):
+    os.makedirs(scriptFolder)
 scriptFileName = "scriptNames.txt"
-if not os.path.exists("scripts"):
-    os.makedirs("scripts")
-scriptFile = open(os.path.join("scripts",scriptFileName),'a')
+scriptFile = open(os.path.join(scriptFolder,scriptFileName),'a')
+
 
 with open(inputFileName) as inputFile:
 	inputData = json.load(inputFile)
 
 #extract data from json file
-exploits = inputData['exploits']
+for exploit in inputData:
+    scriptName = exploit["name"]
+    if not scriptName:
+        scriptName = str(int(time.time()+random.randrange(0,int(time.time()))))
+    scriptName+=".py"
+    scriptPath = os.path.join(scriptFolder,scriptName)
+    script = open(scriptPath,"w+")
 
-for exploit in exploits:
-    url = exploit["url"]
-    loginCredentials = exploit["loginCredentials"]
-    credentialsFields = exploit["credentialFields"]
-    exploitUrl =exploit["exploiturl"]
-    if "exploitName" in exploit:
-        scriptName = exploit["name"]
-    else:
-        scriptName = str(int(time.time()+random.randrange(1,int(time.time()))))   #name of script is timestamp to ensure uniqueness
+    script.write("from selenium import webdriver\n")
+    script.write("from selenium.webdriver.common.keys import Keys\n\n")
+    script.write("driver = webdriver.Firefox()\n\n")
 
+    exploitSteps = exploit["exploit"]
+    firstLink = True
+    for step in exploitSteps:
+        url = step["url"]
+        formFields = step["formFields"]
+        script.write("driver.get('"+url+"')\n\n")
+        if formFields:
+            fieldName = ""
+            fieldValue =""
+            for key, value in formFields.items():
+                fieldName = key
+                fieldValue = formFields.get(key)
+                script.write("driver.find_element_by_name('"+fieldName+"').send_keys('"+fieldValue+"')\n")
+            script.write("driver.find_element_by_name('"+fieldName+"').send_keys(Keys.RETURN)\n\n")
+        if (firstLink):
+            scriptFile.write("url:"+url+" =>"+scriptName+"\n")
+            firstLink = False;
 
-    for cred in loginCredentials:
-        username = cred['username']
-        password = cred['password']
-
-    for field in credentialsFields:
-        usernameBox = field['usernameBox']
-        passwordBox = field['passwordBox']
-
-    if username != "":
-        needLogin = True
-    else:
-        needLogin = False
-
-    importString = "import json\nfrom selenium import webdriver\nfrom selenium.webdriver.common.keys import Keys\n"
-    url = "'"+url+"'"
-    openBrowser = "driver = webdriver.Firefox()\ndriver.get("+url+")\n"
-    username = "'"+username+"'"
-    password = "'"+password+"'"
-    login = "usernameField.send_keys("+username+")\npasswordField.send_keys("+password+")\nusernameField.send_keys(Keys.RETURN)\n"
-    exploitUrl = "'"+exploitUrl+"'"
-    attack = "driver.get("+exploitUrl+")\n"
-    scriptName = scriptName+".py"
-
-    scriptPath = os.path.join("scripts",scriptName)
-    with open(scriptPath,"w+") as script:
-        script.write(importString)
-        script.write(openBrowser)
-        if needLogin:
-	    script.write(login)
-        script.write(attack)
-        script.close()
-    scriptFile.write("url:"+url+" =>"+scriptName+"\n")
+    script.close()
 
 scriptFile.write("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
 scriptFile.close()
