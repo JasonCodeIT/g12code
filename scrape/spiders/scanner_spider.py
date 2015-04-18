@@ -59,8 +59,8 @@ class ScannerSpider(CrawlSpider):
         yield cookie_item
 
         # Extracts all headers
-        headers = self._process_headers(response)
-        yield headers
+        # headers = self._process_headers(response)
+        # yield headers
 
         # Extracts all query strings
         if "?" in response.url:
@@ -160,12 +160,14 @@ class ScannerSpider(CrawlSpider):
 
     def _process_form(self, sel, response):
         form = FormItem()
+        form['url'] = response.url
+
         # Extracts form action URL
-        form['url'] = sel.xpath('@action').extract()
-        if len(form['url']) == 0:
-            form['url'] = response.url
+        action_url = sel.xpath('@action').extract()
+        if len(action_url) != 0:
+            form['target_url'] = self.__to_absolute_url(response.url, action_url[0])
         else:
-            form['url'] = self.__to_absolute_url(response.url, form['url'][0])
+            form['target_url'] = response.url
 
         # Extracts the method used in form (i.e. GET or POST)
         form['method'] = sel.xpath('@method').extract()
