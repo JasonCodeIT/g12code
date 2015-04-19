@@ -12,9 +12,9 @@ def main():
 
 
 def test_auditor():
-    worker = auditor()
+    worker = auditor('data/seeds.json')
 
-    worker.launch(['output/endpoints.json', 'output/payloads.json'], 'output/exploits.json')
+    worker.launch(['output/endpoints/app1.json', 'data/payloads.json'], 'output/exploits.json')
 
 
 test_auditor()
