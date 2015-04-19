@@ -1,8 +1,9 @@
 import abc
 import json
 
+
 class JSONPipe:
-    '''A module that is used to form a pipeline.
+    """A module that is used to form a pipeline.
 
     Extend this class to create a component that
     takes a JSON format file as input and produces
@@ -11,7 +12,7 @@ class JSONPipe:
     Multiple such modules can be connected together
     to form a `pipeline` to finish a certain task.
     In our case, the DTAudit scanner.
-    '''
+    """
 
     __metaclass__ = abc.ABCMeta
 
@@ -25,7 +26,7 @@ class JSONPipe:
         outFile : JSON format file
         '''
         incomings = []
-        outgoing  = []
+        outgoing = []
 
         for path in inFiles:
             incomings.append(self.parse(path))
@@ -36,22 +37,22 @@ class JSONPipe:
 
     @abc.abstractmethod
     def process(self, incomings):
-        '''Process the inputs
+        """Process the inputs
 
         Child class needs to implement this method.
-        '''
+        """
         return incomings
 
     def parse(self, path):
-        '''Parse the JSON format file at `path` and
+        """Parse the JSON format file at `path` and
         return the parsed Python object.
-        '''
+        """
         return json.loads(open(path).read())
 
     def save(self, items, path):
-        '''Save the Python object `items` as a JSON
+        """Save the Python object `items` as a JSON
         format file at `path`.
-        '''
+        """
         with open(path, 'w') as f:
             f.write(json.dumps(items, indent=4, separators=(',', ': ')))
             f.close()

@@ -4,10 +4,10 @@ from DTAudit.auditor import auditor
 
 def main():
     audit = DTAuditor(seeds='data/seeds.json',
-                        endpoints='output/endpoints.json',
-                        payloads='output/payloads.json',
-                        exploits='output/exploits.json',
-                        script='output/scripts.json')
+                      endpoints='output/endpoints.json',
+                      payloads='output/payloads.json',
+                      exploits='output/exploits.json',
+                      script='output/scripts.json')
     audit.launch()
 
 

@@ -42,4 +42,13 @@ class robot(JSONPipe):
                 ]
             }
         '''
-        return incomings[0]
+        return [
+            {
+                'url': 'http://bm1.com',
+                'method': 'GET',
+                'params': {
+                    'path': '',
+                    'file': ''
+                }
+            }
+        ]
