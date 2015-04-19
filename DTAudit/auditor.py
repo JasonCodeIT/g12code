@@ -2,17 +2,41 @@ from pipe import JSONPipe
 import requests
 import re
 import os
+import json
+from urlparse import urlparse
+from urlparse import parse_qsl
+
+
+def domain(url):
+    url = re.sub('http(s?)://', '', url)
+    return url[:url.find('/')]
+
+def parse_token(url, keys):
+    o = urlparse(url)
+    params = parse_qsl(o.query)
+
+    token = {}
+
+    for key, value in params:
+        if key in keys:
+            token[key] = value
+
+    return token
 
 
 class auditor(JSONPipe):
     """Inject payloads to each endpoint and check if there is any vulnerability.
     """
 
-    def __init__(self):
+    def __init__(self, seeds):
         self.verificationPattern = re.compile('root:(.*):0:0')
         self.linkPattern = re.compile('(href|src)="?([^\">]*)"?')
         self.filePath = 'data/image.jpg'
         self.http = requests.Session()
+
+        # pairs of : domain - already logged in?
+        self.session = {}
+        self.seeds = json.load(open(seeds, 'r'))
         pass
 
     def process(self, incomings):
@@ -28,6 +52,9 @@ class auditor(JSONPipe):
         counter = 0
 
         for endpoint in incomings[0]:
+
+            self.login(endpoint)
+
             for payload in incomings[1]:
                 exploitable, exploit = self.exploit(endpoint, payload)
 
@@ -37,10 +64,31 @@ class auditor(JSONPipe):
                         'name': 'exploit-' + str(counter),
                         'exploit': exploit
                     })
+                    print "found exploit, skip other payload"
                     break
-            print "found exploit, skip other payload"
 
         return exploits
+
+    def login(self, endpoint):
+
+        seed = endpoint['seed']
+
+        if seed not in self.session:
+            self.session[seed] = {
+                "login": False,
+                "token": None
+            }
+        else:
+            return
+
+        auth = self.seeds[seed]['auth']
+
+        if auth:
+            self.http.get(auth['url'], verify=False)
+            r = self.http.post(auth['target'], data=auth['params'], verify=False)
+            if 'token' in auth:
+                self.session[seed]['token'] = parse_token(r.request.url, auth['token'])
+            self.session[seed]['login'] = True
 
     def exploit(self, endpoint, payload):
         exploit = []
@@ -51,50 +99,61 @@ class auditor(JSONPipe):
 
         entrance = endpoint['url'] if 'url' in endpoint else endpoint['target']
 
-        bundle = {}
         files = {}
         file_fields = {}
 
         print method, ": ", target
 
         for key in params:
-            if params[key] == "":
-                bundle[key] = payload
-            else:
-                bundle[key] = params[key]
-
             if endpoint['files'] and key in endpoint['files']:
-                bundle.pop(key, None)
                 files[key] = open(self.filePath, 'rb')
-
-        print bundle, files
 
         if files:
             for k in files:
                 file_fields[k] = os.path.abspath(files[k].name)
 
-        if method == 'GET':
-            query = ''
-            for k in bundle:
-                query += "%s=%s&" % (k, bundle[k])
-            exploit.append({
-                'url': target + "?" + query,
-                'formFields': None
-            })
-            r = self.http.get(target, params=bundle, verify=False)
-        elif method == 'POST':
-            if entrance:
+        bundles = self.prepare_bundles(params, payload)
+
+        found = False
+
+        for bundle in bundles:
+
+            for key in params:
+                if endpoint['files'] and key in endpoint['files']:
+                    bundle.pop(key, None)
+
+            print "attempting:", bundle, file_fields
+
+            if method == 'GET':
+                r = self.http.get(target, params=bundle)
+            else:
+                r = self.http.post(target, data=bundle, files=files)
+
+            exploitable, exp = self.verify(r, target)
+
+            if exploitable:
+                found = True
+                break
+
+        if found:
+            if method == 'GET':
+                query = ''
+                for k in bundle:
+                    query += "%s=%s&" % (k, bundle[k])
+                exploit.append({
+                    'url': target + "?" + query,
+                    'formFields': None,
+                    'fileFields': None
+                })
+            elif method == 'POST':
                 exploit.append({
                     'url': entrance,
                     'formFields': bundle,
                     'fileFields': file_fields
                 })
-            r = self.http.post(target, params=bundle, files=files, verify=False)
-        # Ignore COOKIE for now
-        else:
-            return False, []
-
-        exploitable, exp = self.verify(r, target)
+            # Ignore COOKIE for now
+            else:
+                return False, []
 
         print 'exploitable: ', exploitable
 
@@ -109,13 +168,10 @@ class auditor(JSONPipe):
         else:
             links = self.find_links(response.text, referer)
 
-            print links
-
             for link in links:
                 if re.search('logout', link):
                     print "Skip: ", link
                     continue
-                print "GET: ", link
                 r = self.http.get(link)
                 if self.see_root(r.text):
                     exploit.append({
@@ -141,3 +197,26 @@ class auditor(JSONPipe):
                 links.append(base + '/' + uri)
 
         return links
+
+    def prepare_bundles(self, params, payload):
+
+        keys = params.keys()
+        bundles = []
+        bundle = {}
+
+        if len(payload) == 1:
+            for key in keys:
+                bundle[key] = payload[0]
+            bundles.append(bundle)
+
+        elif len(payload) == 2:
+            for i in range(0, len(keys)):
+                bundle = {keys[i]: payload[0]}
+                for j in range(i+1, len(keys)):
+                    bundle[keys[j]] = payload[1]
+                    for key in keys:
+                        if key not in bundle:
+                            bundle[key] = payload[0]
+                    bundles.append(bundle)
+
+        return bundles
