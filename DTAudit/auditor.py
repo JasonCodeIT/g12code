@@ -3,6 +3,7 @@ import requests
 import re
 import os
 
+
 class auditor(JSONPipe):
     """Inject payloads to each endpoint and check if there is any vulnerability.
     """
@@ -11,6 +12,7 @@ class auditor(JSONPipe):
         self.verificationPattern = re.compile('root:(.*):0:0')
         self.linkPattern = re.compile('(href|src)="?([^\">]*)"?')
         self.filePath = 'data/image.jpg'
+        self.http = requests.Session()
         pass
 
     def process(self, incomings):
@@ -44,15 +46,16 @@ class auditor(JSONPipe):
         exploit = []
 
         method = endpoint['method'].upper()
-        url = endpoint['url']
-        entrance = endpoint['referer']
+        target = endpoint['target']
         params = endpoint['params']
+
+        entrance = endpoint['url'] if 'url' in endpoint else endpoint['target']
 
         bundle = {}
         files = {}
-        fileFields = {}
+        file_fields = {}
 
-        print method, ": ", url
+        print method, ": ", target
 
         for key in params:
             if params[key] == "":
@@ -60,7 +63,7 @@ class auditor(JSONPipe):
             else:
                 bundle[key] = params[key]
 
-            if key in endpoint['fileFields']:
+            if endpoint['files'] and key in endpoint['files']:
                 bundle.pop(key, None)
                 files[key] = open(self.filePath, 'rb')
 
@@ -68,32 +71,32 @@ class auditor(JSONPipe):
 
         if files:
             for k in files:
-                fileFields[k] = os.path.abspath(files[k].name)
-
-        r = None
+                file_fields[k] = os.path.abspath(files[k].name)
 
         if method == 'GET':
             query = ''
             for k in bundle:
                 query += "%s=%s&" % (k, bundle[k])
             exploit.append({
-                'url': url + "?" + query,
+                'url': target + "?" + query,
                 'formFields': None
             })
-            r = requests.get(url, params=bundle)
+            r = self.http.get(target, params=bundle, verify=False)
         elif method == 'POST':
             if entrance:
                 exploit.append({
                     'url': entrance,
                     'formFields': bundle,
-                    'fileFields': fileFields
+                    'fileFields': file_fields
                 })
-            r = requests.post(url, params=bundle, files=files)
+            r = self.http.post(target, params=bundle, files=files, verify=False)
+        # Ignore COOKIE for now
+        else:
+            return False, []
 
-        exploitable, exp = self.verify(r, url)
+        exploitable, exp = self.verify(r, target)
 
         print 'exploitable: ', exploitable
-
 
         return exploitable, exploit + exp
 
@@ -101,7 +104,7 @@ class auditor(JSONPipe):
 
         exploit = []
 
-        if self.verificationPattern.search(response.text):
+        if self.see_root(response.text):
             return True, exploit
         else:
             links = self.find_links(response.text, referer)
@@ -109,9 +112,12 @@ class auditor(JSONPipe):
             print links
 
             for link in links:
+                if re.search('logout', link):
+                    print "Skip: ", link
+                    continue
                 print "GET: ", link
-                r = requests.get(link)
-                if self.verificationPattern.search(r.text):
+                r = self.http.get(link)
+                if self.see_root(r.text):
                     exploit.append({
                         'url': link,
                         'formFields': None
@@ -120,7 +126,10 @@ class auditor(JSONPipe):
 
         return False, exploit
 
-    def find_links(self, text, referer = ''):
+    def see_root(self, text):
+        return self.verificationPattern.search(re.sub('<[^>]*>', '', text))
+
+    def find_links(self, text, referer=''):
         links = []
         base = referer[:referer.rfind('/')]
         for match in self.linkPattern.finditer(text):
@@ -129,6 +138,6 @@ class auditor(JSONPipe):
             if uri[:7] == 'http://' or uri[:8] == 'https://':
                 links.append(uri)
             else:
-                links.append(base +'/'+ uri)
+                links.append(base + '/' + uri)
 
         return links
