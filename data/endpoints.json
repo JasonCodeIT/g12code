@@ -1,5 +1,6 @@
 [
   {
+    "seed": 0,
     "url": "http://www.google.com",
     "target": "http://bm1.com",
     "method": "GET",
@@ -10,6 +11,7 @@
     "files": []
   },
   {
+    "seed": 1,
     "url": "http://bm1.com/post.php",
     "target": "http://bm1.com/detail.php",
     "method": "POST",
