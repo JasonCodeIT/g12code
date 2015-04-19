@@ -53,8 +53,9 @@ for exploit in inputData:
             for key, value in fileFields.items():
                 fileFieldName = key
                 filePath = fileFields.get(key)
-                script.write("driver.find_element_by_name('"+fileFieldName+"').send_keys('"+filePath+"')\n\n")
-
+                script.write("driver.find_element_by_name('"+fileFieldName+"').send_keys('"+filePath+"')\n")
+            #under the assumption that we can only upload a single file before the page is forced to reload
+            script.write("driver.find_element_by_name('"+fileFieldName+"').send_keys(Keys.RETURN)\n\n")
 
     script.close()
 
