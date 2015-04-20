@@ -5,11 +5,13 @@ import os
 import json
 from urlparse import urlparse
 from urlparse import parse_qsl
+import lxml.html
 
 
 def domain(url):
     url = re.sub('http(s?)://', '', url)
     return url[:url.find('/')]
+
 
 def parse_token(url, keys):
     o = urlparse(url)
@@ -22,6 +24,49 @@ def parse_token(url, keys):
             token[key] = value
 
     return token
+
+
+def prepare_bundles(params, payload):
+    keys = params.keys()
+    bundles = []
+
+    if len(payload) == 1:
+        for key in keys:
+            bundle = params.copy()
+            bundle[key] = payload[0]
+            fill(bundle, "".join(payload))
+            bundles.append(bundle)
+
+    elif len(payload) == 2:
+        if len(keys) == 1:
+            bundles.append({keys[0]: "".join(payload)})
+
+        for i in range(0, len(keys)):
+            ka = keys[i]
+            for j in range(i + 1, len(keys)):
+                kb = keys[j]
+
+                bundle = params.copy()
+                bundle[ka] = payload[0]
+                bundle[kb] = payload[1]
+                bundle = fill(bundle, payload[0])
+                bundles.append(bundle)
+
+                bundle = params.copy()
+                bundle[kb] = payload[0]
+                bundle[ka] = payload[1]
+                bundle = fill(bundle, payload[0])
+                bundles.append(bundle)
+
+    return bundles
+
+
+def fill(bundle, value):
+    for k in bundle:
+        if bundle[k] == "":
+            bundle[k] = value
+
+    return bundle
 
 
 class auditor(JSONPipe):
@@ -77,7 +122,7 @@ class auditor(JSONPipe):
         if seed not in self.session:
             self.session[seed] = {
                 "login": False,
-                "token": None
+                "token": None,
             }
         else:
             return
@@ -85,14 +130,28 @@ class auditor(JSONPipe):
         auth = self.seeds[seed]['auth']
 
         if auth:
-            self.http.get(auth['url'], verify=False)
+            page = self.http.get(auth['url'], verify=False)
+            html = lxml.html.document_fromstring(str(page.text))
+            inputs = html.xpath("//input[@type='hidden']")
+            if 'grabs' in auth:
+                for field in inputs:
+                    if field.name in auth['grabs']:
+                        auth['params'][field.name] = field.value
+
             r = self.http.post(auth['target'], data=auth['params'], verify=False)
+
             if 'token' in auth:
+                print r.request.url
                 self.session[seed]['token'] = parse_token(r.request.url, auth['token'])
+                print self.session[seed]
             self.session[seed]['login'] = True
 
     def exploit(self, endpoint, payload):
         exploit = []
+
+        session = None
+        if 'seed' in endpoint and endpoint['seed'] >= 0:
+            session = self.session[endpoint['seed']]
 
         method = endpoint['method'].upper()
         target = endpoint['target']
@@ -103,23 +162,27 @@ class auditor(JSONPipe):
         files = {}
         file_fields = {}
 
-        print method, ": ", target
-
         for key in params:
             if endpoint['files'] and key in endpoint['files']:
                 files[key] = open(self.filePath, 'rb')
+
+        if session['token']:
+            for k in session['token']:
+                target += "&" + k + "=" + session['token'][k]
+        print method, ": ", target
 
         if files:
             for k in files:
                 file_fields[k] = os.path.abspath(files[k].name)
 
-        bundles = self.prepare_bundles(params, payload)
+        bundles = prepare_bundles(params, payload)
 
         found = False
 
         print bundles
 
         for bundle in bundles:
+
 
             for key in params:
                 if endpoint['files'] and key in endpoint['files']:
@@ -166,6 +229,8 @@ class auditor(JSONPipe):
 
         exploit = []
 
+        print response.text.encode('utf-8')
+
         if self.see_root(response.text):
             return True, exploit
         else:
@@ -175,7 +240,7 @@ class auditor(JSONPipe):
                 if re.search('logout', link):
                     print "Skip: ", link
                     continue
-                r = self.http.get(link)
+                r = self.http.get(link, verify=False)
                 if self.see_root(r.text):
                     exploit.append({
                         'url': link,
@@ -186,7 +251,10 @@ class auditor(JSONPipe):
         return False, exploit
 
     def see_root(self, text):
-        return self.verificationPattern.search(re.sub('<[^>]*>', '', text))
+        passwd =  self.verificationPattern.search(re.sub('<[^>]*>', '', text))
+        rootlist = re.search('\/lost\+found', text)
+
+        return passwd or rootlist
 
     def find_links(self, text, referer=''):
         links = []
@@ -200,30 +268,3 @@ class auditor(JSONPipe):
                 links.append(base + '/' + uri)
 
         return links
-
-    def prepare_bundles(self, params, payload):
-
-        keys = params.keys()
-        bundles = []
-        bundle = {}
-
-        if len(payload) == 1:
-            for key in keys:
-                bundle[key] = payload[0]
-            bundles.append(bundle)
-
-        elif len(payload) == 2:
-            if len(keys) == 1:
-                bundles.append({keys[0]: "".join(payload)})
-            for i in range(0, len(keys)):
-                bundle = {keys[i]: payload[0]}
-                for j in range(i+1, len(keys)):
-                    bundle[keys[j]] = payload[1]
-                    for key in keys:
-                        if key not in bundle:
-                            bundle[key] = payload[0]
-                    bundles.append(bundle)
-
-        print payload, params, bundle, bundles
-
-        return bundles

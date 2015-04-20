@@ -12,5 +12,14 @@ auditor-app3:
 auditor-app5:
 	python audit.py --action=auditor --endpoints=output/endpoints/app5.json --payloads=data/payloads.json
 
+auditor-app6:
+	python audit.py --action=auditor --endpoints=output/endpoints/app6.json --payloads=data/payloads.json
+
+auditor-app7:
+	python audit.py --action=auditor --endpoints=output/endpoints/app7.json --payloads=data/payloads.json
+
+auditor-app8:
+	python audit.py --action=auditor --endpoints=output/endpoints/app8.json --payloads=data/payloads.json
+
 clean:
 	rm -rf output/*

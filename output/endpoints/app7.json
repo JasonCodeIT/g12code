@@ -1,0 +1,14 @@
+[
+  {
+    "seed": 17,
+    "url": "https://app7.com/oc-admin/",
+    "target": "https://app7.com/oc-admin/",
+    "method": "GET",
+    "params": {
+      "page": "appearance",
+      "action": "render",
+      "file": "oc-content/themes/bender/admin/header.php"
+    },
+    "files": null
+  }
+]
