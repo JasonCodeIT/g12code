@@ -1,0 +1,122 @@
+[
+  {
+    "seed": -1,
+    "url": "https://app3.com/js/netron.js",
+    "target": "https://app3.com/js/netron.js",
+    "method": "COOKIE",
+    "params": {"stylesheet": "ayti"},
+    "files": {}
+  },
+  {
+    "seed": -1,
+    "url": "https://app3.com/js/script.js",
+    "target": "https://app3.com/js/script.js",
+    "method": "COOKIE",
+    "params": {"stylesheet": "ayti"},
+    "files": {}
+  },
+  {
+    "seed": -1,
+    "url": "https://app3.com/windows/function.php?file=",
+    "target": "https://app3.com/windows/function.php?file=",
+    "method": "POST",
+    "params": {
+      "directory": "",
+      "dir": "",
+      "file": ""
+    },
+    "files": {}
+  },
+  {
+    "seed": -1,
+    "url": "https://app3.com/windows/hotpatch.php?file=",
+    "target": "https://app3.com/windows/hotpatch.php?file=",
+    "method": "POST",
+    "params": {
+      "directory": "",
+      "dir": "",
+      "file": ""
+    },
+    "files": {}
+  },
+  {
+    "seed": -1,
+    "url": "https://app3.com/windows/code.php?file=",
+    "target": "https://app3.com/windows/code.php?file=",
+    "method": "POST",
+    "params": {
+      "directory": "",
+      "dir": "",
+      "file": ""
+    },
+    "files": {}
+  },
+  {
+    "seed": -1,
+    "url": "https://app3.com/windows/exploit.php?file=",
+    "target": "https://app3.com/windows/exploit.php?file=",
+    "method": "POST",
+    "params": {
+      "directory": "",
+      "dir": "",
+      "file": ""
+    },
+    "files": {}
+  },
+  {
+    "seed": -1,
+    "url": "https://app3.com/windows/function.php",
+    "target": "https://app3.com/windows/function.php",
+    "method": "GET",
+    "params": {"file": ""},
+    "files": {}
+  },
+  {
+    "seed": -1,
+    "url": "https://app3.com/windows/help.php",
+    "target": "https://app3.com/windows/help.php",
+    "method": "GET",
+    "params": {"type": ""},
+    "files": {}
+  },
+  {
+    "seed": -1,
+    "url": "https://app3.com/windows/hotpatch.php",
+    "target": "https://app3.com/windows/hotpatch.php",
+    "method": "GET",
+    "params": {"file": ""},
+    "files": {}
+  },
+  {
+    "seed": -1,
+    "url": "https://app3.com/windows/code.php",
+    "target": "https://app3.com/windows/code.php",
+    "method": "GET",
+    "params": {"file": ""},
+    "files": {}
+  },
+  {
+    "seed": -1,
+    "url": "https://app3.com/windows/exploit.php",
+    "target": "https://app3.com/windows/exploit.php",
+    "method": "GET",
+    "params": {"file": ""},
+    "files": {}
+  },
+  {
+    "seed": -1,
+    "url": "https://app3.com/js/hotpatch.js",
+    "target": "https://app3.com/js/hotpatch.js",
+    "method": "COOKIE",
+    "params": {"stylesheet": "ayti"},
+    "files": {}
+  },
+  {
+    "seed": -1,
+    "url": "https://app3.com/js/exploit.js",
+    "target": "https://app3.com/js/exploit.js",
+    "method": "COOKIE",
+    "params": {"stylesheet": "ayti"},
+    "files": {}
+  }
+]

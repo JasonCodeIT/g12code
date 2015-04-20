@@ -53,7 +53,8 @@ class auditor(JSONPipe):
 
         for endpoint in incomings[0]:
 
-            self.login(endpoint)
+            if 'seed' in endpoint and endpoint['seed'] >= 0:
+                self.login(endpoint)
 
             for payload in incomings[1]:
                 exploitable, exploit = self.exploit(endpoint, payload)
@@ -116,6 +117,8 @@ class auditor(JSONPipe):
 
         found = False
 
+        print bundles
+
         for bundle in bundles:
 
             for key in params:
@@ -125,9 +128,9 @@ class auditor(JSONPipe):
             print "attempting:", bundle, file_fields
 
             if method == 'GET':
-                r = self.http.get(target, params=bundle)
+                r = self.http.get(target, params=bundle, verify=False)
             else:
-                r = self.http.post(target, data=bundle, files=files)
+                r = self.http.post(target, data=bundle, files=files, verify=False)
 
             exploitable, exp = self.verify(r, target)
 
@@ -210,6 +213,8 @@ class auditor(JSONPipe):
             bundles.append(bundle)
 
         elif len(payload) == 2:
+            if len(keys) == 1:
+                bundles.append({keys[0]: "".join(payload)})
             for i in range(0, len(keys)):
                 bundle = {keys[i]: payload[0]}
                 for j in range(i+1, len(keys)):
@@ -218,5 +223,7 @@ class auditor(JSONPipe):
                         if key not in bundle:
                             bundle[key] = payload[0]
                     bundles.append(bundle)
+
+        print payload, params, bundle, bundles
 
         return bundles
