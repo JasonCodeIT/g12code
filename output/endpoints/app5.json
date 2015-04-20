@@ -1,0 +1,12 @@
+[
+  {
+    "seed": -1,
+    "url": "https://app5.com/www/js/scripts.php",
+    "target": "https://app5.com/www/js/scripts.php",
+    "method": "GET",
+    "params": {
+      "load": ""
+    },
+    "files": null
+  }
+]
