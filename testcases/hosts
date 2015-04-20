@@ -1,0 +1,42 @@
+127.0.0.1	localhost
+127.0.1.1	user
+
+192.168.56.101	app1.com
+192.168.56.101	app2.com
+192.168.56.101	app3.com
+192.168.56.101	app4.com
+192.168.56.101	app5.com
+192.168.56.101	app6.com
+192.168.56.101	app7.com
+192.168.56.101	app8.com
+192.168.56.101	app9.com
+192.168.56.101	app10.com
+192.168.56.101	app11.com
+
+192.168.56.101	attacker.com
+192.168.56.101	bm1.com
+192.168.56.101	bm2.com
+192.168.56.101	bm3.com
+192.168.56.101	bm4.com
+192.168.56.101	bm5.com
+
+192.168.56.101	own1.com
+192.168.56.101	own2.com
+192.168.56.101	own3.com
+192.168.56.101	own4.com
+192.168.56.101	own5.com
+192.168.56.101	own6.com
+192.168.56.101	own7.com
+192.168.56.101	own8.com
+192.168.56.101	own9.com
+192.168.56.101	own10.com
+192.168.56.101	own11.com
+
+
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
