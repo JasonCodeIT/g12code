@@ -1,0 +1,13 @@
+[
+  {
+    "seed": 15,
+    "url": "https://app6.com/zimplit.php",
+    "target": "https://app6.com/zimplit.php",
+    "method": "GET",
+    "params": {
+      "action": "load1",
+      "file": "index.html"
+    },
+    "files": null
+  }
+]

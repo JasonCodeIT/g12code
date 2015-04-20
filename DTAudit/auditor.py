@@ -34,8 +34,9 @@ def prepare_bundles(params, payload):
         for key in keys:
             bundle = params.copy()
             bundle[key] = payload[0]
-            fill(bundle, "".join(payload))
             bundles.append(bundle)
+
+        bundles.append(fill(params.copy(), payload[0]))
 
     elif len(payload) == 2:
         if len(keys) == 1:
@@ -141,9 +142,7 @@ class auditor(JSONPipe):
             r = self.http.post(auth['target'], data=auth['params'], verify=False)
 
             if 'token' in auth:
-                print r.request.url
                 self.session[seed]['token'] = parse_token(r.request.url, auth['token'])
-                print self.session[seed]
             self.session[seed]['login'] = True
 
     def exploit(self, endpoint, payload):
@@ -179,11 +178,7 @@ class auditor(JSONPipe):
 
         found = False
 
-        print bundles
-
         for bundle in bundles:
-
-
             for key in params:
                 if endpoint['files'] and key in endpoint['files']:
                     bundle.pop(key, None)
@@ -229,8 +224,6 @@ class auditor(JSONPipe):
 
         exploit = []
 
-        print response.text.encode('utf-8')
-
         if self.see_root(response.text):
             return True, exploit
         else:
@@ -251,10 +244,11 @@ class auditor(JSONPipe):
         return False, exploit
 
     def see_root(self, text):
-        passwd =  self.verificationPattern.search(re.sub('<[^>]*>', '', text))
+        passwd = self.verificationPattern.search(re.sub('<[^>]*>', '', text))
         rootlist = re.search('\/lost\+found', text)
+        initrdimg = re.search('initrd\.img', text)
 
-        return passwd or rootlist
+        return passwd or rootlist or initrdimg
 
     def find_links(self, text, referer=''):
         links = []
