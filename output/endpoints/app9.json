@@ -1,0 +1,12 @@
+[
+  {
+    "seed": 20,
+    "url": "https://app9.com/index-test.php/admin/translationManager",
+    "target": "https://app9.com/index-test.php/admin/translationManager",
+    "method": "GET",
+    "params": {
+      "file": "en.php"
+    },
+    "files": null
+  }
+]
