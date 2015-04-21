@@ -9,6 +9,7 @@ from scrapy.http import Request, FormRequest
 from scrape.items import FormItem
 from urlparse import urlparse
 from scrapy import log
+from scrapy import Selector
 
 
 class ScannerSpider(CrawlSpider):
@@ -180,7 +181,8 @@ class ScannerSpider(CrawlSpider):
                 yield form
 
         # Process all form tags
-        for sel in response.xpath('//form'):
+        for form in response.xpath('//form').extract():
+            sel = Selector(text=form, type='html')
             form_input = self._process_form(sel, response)
             yield form_input
 
@@ -204,19 +206,22 @@ class ScannerSpider(CrawlSpider):
         form['url'] = response.url
 
         # Extracts form action URL
-        action_url = sel.xpath('@action').extract()
+        action_url = sel.xpath('//@action').extract()
         if len(action_url) != 0:
             form['target_url'] = self.__to_absolute_url(response.url, action_url[0])
         else:
             form['target_url'] = response.url
 
         # Extracts the method used in form (i.e. GET or POST)
-        form['method'] = sel.xpath('@method').extract()
+        form['method'] = sel.xpath('//@method').extract()
         if len(form['method']) == 0:
-            form['method'] = ["GET"]
+            form['method'] = "GET"
+        else:
+            form['method'] = form['method'][0]
 
         # Extracts all params from all inputs in form
         params = sel.xpath('//*/@name').extract()
+        self.log('[DEBUG-FORM]: ' + "".join(params))
         mydict = {}
         for p in params:
             mydict[p] = ''
