@@ -5,7 +5,7 @@ import random
 
 #open json file
 
-inputFileName = "../data/exploits.json"
+inputFileName = "../output/exploits/own-exploits.json"
 scriptFolder = "scripts"+str(int(time.time()))
 if not os.path.exists(scriptFolder):
     os.makedirs(scriptFolder)
@@ -35,7 +35,6 @@ for exploit in inputData:
         url = step["url"]
         formFields = step["formFields"]
         script.write("driver.get('"+url+"')\n\n")
-<<<<<<< HEAD
         cookies = step["cookies"]
         if cookies:
             for key, value in cookies.items():
@@ -43,8 +42,6 @@ for exploit in inputData:
                 cookieValue = cookies.get(key)
                 script.write("driver.add_cookie({'name:':'"+cookieName+"','value':'"+cookieValue+"'})\n")
             script.write("driver.get('"+url+"')\n\n")
-=======
->>>>>>> origin/master
         if formFields:
             fieldName = ""
             fieldValue =""
