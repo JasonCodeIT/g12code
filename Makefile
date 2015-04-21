@@ -39,7 +39,7 @@ robot-app5:
 	python audit.py --action=robot --seeds=data/seeds/public/app5.json --endpoints=output/endpoints/app5.json
 
 auditor-app5:
-	python audit.py --action=auditor --seeds=data/seeds/public/app5.json --endpoints=output/endpoints/app5.json --payloads=output/payloads.json --exploits=output/exploits/app5.json
+	python audit.py --action=auditor --seeds=data/seeds/public/app5.json --endpoints=output/endpoints/app5.json --payloads=data/payloads-tiny.json --exploits=output/exploits/app5.json
 
 automator-app5:
 	python audit.py --action=automate --exploits=output/exploits/app5.json --script=s.json
