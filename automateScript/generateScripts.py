@@ -41,28 +41,19 @@ for exploit in inputData:
                 cookieName = key
                 cookieValue = cookies.get(key)
                 script.write("driver.add_cookie({'name:':'"+cookieName+"','value':'"+cookieValue+"'})\n")
+            script.write("driver.get('"+url+"')\n\n")
         if formFields:
             fieldName = ""
             fieldValue =""
             for key, value in formFields.items():
                 fieldName = key
                 fieldValue = formFields.get(key)
-                script.write("driver.find_element_by_name('"+fieldName+"').send_keys('"+fieldValue+"')\n")
-            script.write("driver.find_element_by_name('"+fieldName+"').send_keys(Keys.RETURN)\n\n")
+                script.write("driver.execute_script('document.getElementByName(\""+fieldName+"\").value+=\""+fieldValue+"\"')\n")
+            script.write("driver.element.submit()\n\n")
         if (firstLink):
-            scriptFile.write("url:"+url+" =>"+scriptName+"\n")
+            scriptFile.write("url:"+url+" =>"+scriptName+"\n\n")
             firstLink = False
         fileFields = step["fileFields"]
-        if fileFields:
-            fileFieldName = ""
-            filePath = ""
-            for key, value in fileFields.items():
-                fileFieldName = key
-                filePath = fileFields.get(key)
-                script.write("driver.find_element_by_name('"+fileFieldName+"').send_keys('"+filePath+"')\n")
-            #under the assumption that we can only upload a single file before the page is forced to reload
-            script.write("driver.find_element_by_name('"+fileFieldName+"').send_keys(Keys.RETURN)\n\n")
-
     script.close()
 
 scriptFile.write("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")

