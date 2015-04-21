@@ -6,6 +6,7 @@ run:
 robot:
 	python audit.py --action=robot
 
+
 robot-own:
 	python audit.py --action=robot --seeds=data/ownseeds.json --endpoints=output/endpoints-own.json
 
@@ -13,8 +14,14 @@ auditor-own:
 	python audit.py --action=payload --payloads=output/payloads.json
 	python audit.py --action=auditor --seeds=data/ownseeds.json --endpoints=output/endpoints-own.json --payloads=data/payloads-tiny.json --exploits=output/exploits/own-exploits.json
 
+robot-app1:
+	python audit.py --action=robot --seeds=data/seeds/public/app1.json --endpoints=output/endpoints/app1.json
+
 auditor-app1:
 	python audit.py --action=auditor --endpoints=output/endpoints/app1.json --payloads=data/payloads-tiny.json --exploits=output/exploits/app1.json
+
+automator-app1:
+	python audit.py --action=automate --exploits=output/exploits/app1.json --script=s.json
 
 auditor-app3:
 	python audit.py --action=auditor --endpoints=output/endpoints/app3.json --payloads=data/payloads-tiny.json --exploits=output/exploits/app3.json
