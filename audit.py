@@ -1,6 +1,11 @@
 from DTAudit import DTAuditor
 from DTAudit.auditor import auditor
 import sys, getopt
+from classes.robot import Robot
+import os
+import json
+from twisted.internet import reactor
+from scrapy import signals, log
 
 
 def main(argv):
@@ -14,7 +19,7 @@ def main(argv):
     print opts, args
 
     seeds = 'data/seeds.json'
-    endpoints = 'output/endpoints.json'
+    endpoints = 'data/items.json'
     payloads = 'output/payloads.json'
     exploits = 'output/exploits.json'
     script = 'output/scripts.json'
@@ -41,7 +46,11 @@ def main(argv):
                           exploits=exploits,
                           script=script)
         audit.launch()
-    # Test auditor
+    elif action == 'robot':
+        spider = Robot()
+        spider.crawl()
+        log.start(loglevel=log.DEBUG)
+        reactor.run()
     elif action == 'auditor':
         worker = auditor(seeds)
         worker.launch([endpoints, payloads], exploits)

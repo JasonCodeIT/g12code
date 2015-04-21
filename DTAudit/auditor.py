@@ -141,10 +141,11 @@ class auditor(JSONPipe):
         else:
             return
 
-        params = self.seeds[seed]['auth']['params'].copy()
         auth = self.seeds[seed]['auth']
+        print "login with: ", auth
 
         if auth:
+            params = self.seeds[seed]['auth']['params'].copy()
             page = self.http.get(auth['url'], verify=False)
             html = lxml.html.document_fromstring(str(page.text))
             inputs = html.xpath("//input[@type='hidden']")

@@ -4,6 +4,7 @@
       "url": "https://app1.com/admin/index.php?page=login",
       "target": "https://app1.com/admin/index.php?page=login",
       "method": "POST",
+      "content_type": null,
       "params": {
         "adminname": "admin",
         "password": "admin"
@@ -16,6 +17,7 @@
       "url": "https://app1.com/users/login.php",
       "target": "https://app1.com/users/login.php",
       "method": "POST",
+      "content_type": "application/x-www-form-urlencoded",
       "params": {
         "username": "scanner1",
         "password": "scanner1"
@@ -28,6 +30,7 @@
       "url": "https://app1.com/users/login.php",
       "target": "https://app1.com/users/login.php",
       "method": "POST",
+      "content_type": "application/x-www-form-urlencoded",
       "params": {
         "username": "scanner2",
         "password": "scanner2"
@@ -40,6 +43,7 @@
       "url": "https://app1.com/users/login.php",
       "target": "https://app1.com/users/login.php",
       "method": "POST",
+      "content_type": "application/x-www-form-urlencoded",
       "params": {
         "username": "bryce",
         "password": "bryce"
@@ -52,6 +56,7 @@
       "url": "https://app2.com/login/index.php",
       "target": "https://app2.com/login/index.php",
       "method": "POST",
+      "content_type": null,
       "params": {
         "username": "admin",
         "password": "AdminAdmin1!"
@@ -64,6 +69,7 @@
       "url": "https://app2.com/login/index.php",
       "target": "https://app2.com/login/index.php",
       "method": "POST",
+      "content_type": null,
       "params": {
         "username": "test",
         "password": "TestTest1!"
@@ -80,6 +86,7 @@
       "url": "https://app4.com/index.php",
       "target": "https://app4.com/index.php",
       "method": "POST",
+      "content_type": null,
       "params": {
         "username": "admin@admin.com",
         "password": "admin"
@@ -92,6 +99,7 @@
       "url": "https://app4.com/index.php",
       "target": "https://app4.com/index.php",
       "method": "POST",
+      "content_type": null,
       "params": {
         "username": "dev@dev.com",
         "password": "developer"
@@ -104,6 +112,7 @@
       "url": "https://app4.com/index.php",
       "target": "https://app4.com/index.php",
       "method": "POST",
+      "content_type": null,
       "params": {
         "username": "manager@manager.com",
         "password": "manager"
@@ -116,6 +125,7 @@
       "url": "https://app4.com/index.php",
       "target": "https://app4.com/index.php",
       "method": "POST",
+      "content_type": null,
       "params": {
         "username": "user@user.com",
         "password": "user"
@@ -128,6 +138,7 @@
       "url": "https://app5.com/www/index.php",
       "target": "https://app5.com/www/index.php?index_page",
       "method": "POST",
+      "content_type": null,
       "params": {
         "login": "admin",
         "password": "admin"
@@ -140,6 +151,7 @@
       "url": "https://app5.com/www/index.php",
       "target": "https://app5.com/www/index.php?index_page",
       "method": "POST",
+      "content_type": null,
       "params": {
         "login": "professor",
         "password": "professor"
@@ -152,6 +164,7 @@
       "url": "https://app5.com/www/index.php",
       "target": "https://app5.com/www/index.php?index_page",
       "method": "POST",
+      "content_type": null,
       "params": {
         "login": "student",
         "password": "student"
@@ -164,6 +177,7 @@
       "url": "https://app5.com/www/index.php",
       "target": "https://app5.com/www/index.php?index_page",
       "method": "POST",
+      "content_type": null,
       "params": {
         "login": "student2",
         "password": "student2"
@@ -176,6 +190,7 @@
       "url": "https://app6.com/zimplit.php",
       "target": "https://app6.com/zimplit.php?action=login",
       "method": "POST",
+      "content_type": null,
       "params": {
         "username": "admin",
         "password": "admin"
@@ -183,49 +198,13 @@
     },
     "start_url": "https://app6.com/zimplit.php?action=load&file=index.html"
   },
-  {
-    "auth":{
-      "url": "https://app7.com/index.php?page=login",
-      "target": "https://app7.com/index.php",
-      "method": "POST",
-      "grabs": ["CSRFName", "CSRFToken", "page", "action"],
-      "params": {
-        "email": "test@test.com",
-        "password": "test"
-      }
-    },
-    "start_url": "https://app7.com/"
-  },
-  {
-    "auth":{
-      "url": "https://app7.com/oc-admin/index.php?page=login",
-      "target": "https://app7.com/oc-admin/index.php",
-      "method": "POST",
-      "grabs": ["CSRFName", "CSRFToken", "page", "action"],
-      "params": {
-        "user": "admin",
-        "password": "admin"
-      }
-    },
-    "start_url": "https://app7.com/"
-  },
-  {
-    "auth":{
-      "url": "https://app8.com/upload/index.php?route=account/login",
-      "target": "https://app8.com/upload/index.php?route=account/login",
-      "method": "POST",
-      "params": {
-        "email": "test@test.com",
-        "password": "test"
-      }
-    },
-    "start_url": "https://app8.com/"
-  },
+
   {
     "auth":{
       "url": "https://app8.com/upload/admin",
       "target": "https://app8.com/upload/admin/index.php?route=common/login",
       "method": "POST",
+      "content_type": null,
       "params": {
         "username": "admin",
         "password": "admin"
@@ -239,6 +218,7 @@
       "url": "https://app9.com/index-test.php/site/login",
       "target": "https://app9.com/index-test.php/site/login",
       "method": "POST",
+      "content_type": null,
       "params": {
         "LoginForm[username]": "admin",
         "LoginForm[password]": "admin"
@@ -251,6 +231,7 @@
       "url": "https://app9.com/index-test.php/site/login",
       "target": "https://app9.com/index-test.php/site/login",
       "method": "POST",
+      "content_type": null,
       "params": {
         "LoginForm[username]": "test",
         "LoginForm[password]": "test"
@@ -267,6 +248,7 @@
       "url": "https://app11.com/ajax_login.php",
       "target": "https://app11.com/ajax_login.php",
       "method": "POST",
+      "content_type": null,
       "params": {
         "username": "admin",
         "password": "admin"
