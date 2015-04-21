@@ -1,7 +1,7 @@
 all: run
 
 run:
-	python audit.py
+	python audit.py --action=auditor --endpoints=data/endpoints.json --payloads=data/payloads.json --exploits=output/exploits.json
 
 auditor-app1:
 	python audit.py --action=auditor --endpoints=output/endpoints/app1.json --payloads=data/payloads.json --exploits=output/exploits/app1.json

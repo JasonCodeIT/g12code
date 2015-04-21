@@ -110,7 +110,8 @@ class auditor(JSONPipe):
                 if exploitable:
                     counter += 1
                     if auth:
-                        exploit = [auth] + exploit
+                        #exploit = [auth] + exploit
+                        exploit = exploit
                     exploits.append({
                         'name': 'exploit-' + str(counter),
                         'exploit': exploit
@@ -122,6 +123,9 @@ class auditor(JSONPipe):
             for ex in exploit['exploit']:
                 if 'cookies' not in ex:
                     ex['cookies'] = None
+                if ex['fileFields']:
+                    for k in ex['fileFields']:
+                        ex['formFields'][k] = ex['fileFields'][k]
 
         return exploits
 
@@ -182,6 +186,9 @@ class auditor(JSONPipe):
                 files[key] = open(self.filePath, 'rb')
 
         if session and 'token' in session and session['token']:
+            if entrance == target:
+                for k in session['token']:
+                    entrance += "&" + k + "=" + session['token'][k]
             for k in session['token']:
                 target += "&" + k + "=" + session['token'][k]
         print method, ": ", target
@@ -214,6 +221,9 @@ class auditor(JSONPipe):
                 found = True
                 break
 
+        #cookies = requests.utils.dict_from_cookiejar(self.http.cookies)
+        cookies = self.http.cookies.get_dict(domain(target))
+
         if found:
             if method == 'GET':
                 query = ''
@@ -221,19 +231,21 @@ class auditor(JSONPipe):
                     query += "%s=%s&" % (k, bundle[k])
                 exploit.append({
                     'url': target + "?" + query,
+                    'cookies': cookies,
                     'formFields': None,
                     'fileFields': None
                 })
             elif method == 'COOKIE':
                 exploit.append({
                     'url': target,
-                    'cookies': bundle,
+                    'cookies': cookies,
                     'formFields': None,
                     'fileFields': None
                 })
             elif method == 'POST':
                 exploit.append({
                     'url': entrance,
+                    'cookies': cookies,
                     'formFields': bundle,
                     'fileFields': file_fields
                 })
