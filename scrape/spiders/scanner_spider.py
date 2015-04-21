@@ -244,7 +244,7 @@ class ScannerSpider(CrawlSpider):
         cookies = cookie.split(";")
         for c in cookies:
             cc = c.split("=", 1)
-            mydict[cc[0]] =  cc[1]
+            mydict[cc[0].strip()] = cc[1].strip()
         cookie_item['form_items'] = mydict
         cookie_item['seed'] = self.seed
         return cookie_item

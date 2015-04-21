@@ -1,0 +1,54 @@
+[
+  {
+    "auth":{
+      "url": "https://app4.com/index.php",
+      "target": "https://app4.com/index.php",
+      "method": "POST",
+      "content_type": null,
+      "params": {
+        "username": "admin@admin.com",
+        "password": "admin"
+      }
+    },
+    "start_url": "https://app4.com/index.php"
+  },
+  {
+    "auth":{
+      "url": "https://app4.com/index.php",
+      "target": "https://app4.com/index.php",
+      "method": "POST",
+      "content_type": null,
+      "params": {
+        "username": "dev@dev.com",
+        "password": "developer"
+      }
+    },
+    "start_url": "https://app4.com/index.php"
+  },
+  {
+    "auth":{
+      "url": "https://app4.com/index.php",
+      "target": "https://app4.com/index.php",
+      "method": "POST",
+      "content_type": null,
+      "params": {
+        "username": "manager@manager.com",
+        "password": "manager"
+      }
+    },
+    "start_url": "https://app4.com/index.php"
+  },
+  {
+    "auth":{
+      "url": "https://app4.com/index.php",
+      "target": "https://app4.com/index.php",
+      "method": "POST",
+      "content_type": null,
+      "params": {
+        "username": "user@user.com",
+        "password": "user"
+      }
+    },
+    "start_url": "https://app4.com/index.php"
+  }
+]

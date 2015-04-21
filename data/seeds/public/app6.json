@@ -1,0 +1,15 @@
+[
+  {
+    "auth":{
+      "url": "https://app6.com/zimplit.php",
+      "target": "https://app6.com/zimplit.php?action=login",
+      "method": "POST",
+      "content_type": null,
+      "params": {
+        "username": "admin",
+        "password": "admin"
+      }
+    },
+    "start_url": "https://app6.com/zimplit.php?action=load&file=index.html"
+  }
+]

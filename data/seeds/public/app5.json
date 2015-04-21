@@ -1,0 +1,54 @@
+[
+  {
+    "auth":{
+      "url": "https://app5.com/www/index.php",
+      "target": "https://app5.com/www/index.php?index_page",
+      "method": "POST",
+      "content_type": null,
+      "params": {
+        "login": "admin",
+        "password": "admin"
+      }
+    },
+    "start_url": "https://app5.com/www/administrator.php"
+  },
+  {
+    "auth":{
+      "url": "https://app5.com/www/index.php",
+      "target": "https://app5.com/www/index.php?index_page",
+      "method": "POST",
+      "content_type": null,
+      "params": {
+        "login": "professor",
+        "password": "professor"
+      }
+    },
+    "start_url": "https://app5.com/www/administrator.php"
+  },
+  {
+    "auth":{
+      "url": "https://app5.com/www/index.php",
+      "target": "https://app5.com/www/index.php?index_page",
+      "method": "POST",
+      "content_type": null,
+      "params": {
+        "login": "student",
+        "password": "student"
+      }
+    },
+    "start_url": "https://app5.com/www/student.php"
+  },
+  {
+    "auth":{
+      "url": "https://app5.com/www/index.php",
+      "target": "https://app5.com/www/index.php?index_page",
+      "method": "POST",
+      "content_type": null,
+      "params": {
+        "login": "student2",
+        "password": "student2"
+      }
+    },
+    "start_url": "https://app5.com/www/student.php"
+  }
+]

@@ -1,0 +1,28 @@
+[
+  {
+    "auth":{
+      "url": "https://app9.com/index-test.php/site/login",
+      "target": "https://app9.com/index-test.php/site/login",
+      "method": "POST",
+      "content_type": null,
+      "params": {
+        "LoginForm[username]": "admin",
+        "LoginForm[password]": "admin"
+      }
+    },
+    "start_url": "https://app9.com/index-test.php/site/whatsNew"
+  },
+  {
+    "auth":{
+      "url": "https://app9.com/index-test.php/site/login",
+      "target": "https://app9.com/index-test.php/site/login",
+      "method": "POST",
+      "content_type": null,
+      "params": {
+        "LoginForm[username]": "test",
+        "LoginForm[password]": "test"
+      }
+    },
+    "start_url": "https://app9.com/index-test.php/site/whatsNew"
+  }
+]

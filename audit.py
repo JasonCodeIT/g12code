@@ -48,11 +48,11 @@ def main(argv):
         audit.launch()
     elif action == 'robot':
         spider = Robot(seeds)
-        spider.crawl()
+        outputs = spider.crawl()
         log.start(loglevel=log.DEBUG)
         reactor.run()
 
-        spider.transform('data/items.json', endpoints)
+        spider.transform(outputs, endpoints)
 
     elif action == 'payload':
         plant = factory()

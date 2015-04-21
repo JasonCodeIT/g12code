@@ -1,0 +1,28 @@
+[
+  {
+    "auth":{
+      "url": "https://app2.com/login/index.php",
+      "target": "https://app2.com/login/index.php",
+      "method": "POST",
+      "content_type": null,
+      "params": {
+        "username": "admin",
+        "password": "AdminAdmin1!"
+      }
+    },
+    "start_url": "https://app2.com"
+  },
+  {
+    "auth":{
+      "url": "https://app2.com/login/index.php",
+      "target": "https://app2.com/login/index.php",
+      "method": "POST",
+      "content_type": null,
+      "params": {
+        "username": "test",
+        "password": "TestTest1!"
+      }
+    },
+    "start_url": "https://app2.com"
+  }
+]

@@ -15,6 +15,8 @@ from twisted.internet import reactor
 from scrapy.crawler import Crawler
 from scrapy.settings import Settings
 
+from scrapy import log
+
 
 class Robot(object):
 
@@ -28,21 +30,20 @@ class Robot(object):
         self.seeds = seeds
         return
 
-    def transform(self, scrapy_out_file, endpoint_file):
-        entries = open(scrapy_out_file, 'r').readlines()
+    def transform(self, outputs, endpoint_file):
         endpoints = []
-
-        for entry in entries:
-            entry = json.loads(entry)
-            endpoints.append({
-                'seed': entry['seed'],
-                'url': entry['url'],
-                'target': entry['target_url'] if 'target_url' in entry else entry['url'],
-                'method': entry['method'][0],
-                'params': entry['form_items'],
-                'files': entry['file_items'] if 'file_items' in entry else None
-            })
-
+        for scrapy_out_file in outputs:
+            entries = open(scrapy_out_file, 'r').readlines()
+            for entry in entries:
+                entry = json.loads(entry)
+                endpoints.append({
+                    'seed': entry['seed'],
+                    'url': entry['url'],
+                    'target': entry['target_url'] if 'target_url' in entry else entry['url'],
+                    'method': entry['method'],
+                    'params': entry['form_items'],
+                    'files': entry['file_items'] if 'file_items' in entry else None
+                })
         json.dump(endpoints, open(endpoint_file, 'w'), indent=True)
 
     def spider_closing(self):
@@ -59,13 +60,12 @@ class Robot(object):
             :return:None
         '''
 
-        # delete existing file, if any
-        if os.path.isfile("data/items.json"):
-            os.remove("data/items.json")
 
         # read seed file
         with open(self.seeds) as data_file:
             data = json.load(data_file)
+
+        outputs = []
 
         for seed in data:
             self.seed_idx += 1 # Counter
@@ -80,7 +80,10 @@ class Robot(object):
             else:
                 self.starturl = seed['start_url']
 
-
+            output_file = "output/cache/items-%d.json" % (self.seed_idx)
+            outputs.append(output_file)
+            if os.path.isfile(output_file):
+                os.remove(output_file)
 
             # Start Crawling All Below
 
@@ -89,7 +92,7 @@ class Robot(object):
             crawler.settings.setdict({
                 'START_URL': self.starturl,
                 'FORM_DATA': self.formdata,
-                'FEED_URI': "data/items.json",
+                'FEED_URI': output_file,
                 'AJAXCRAWL_ENABLED': True,
                 'COOKIES_DEBUG': True,
                 'USER_AGAENT': "Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.60 Safari/537.36"
@@ -99,4 +102,4 @@ class Robot(object):
             crawler.crawl(spider)
             self.crawlers_running += 1
             crawler.start()
-        return None
+        return outputs
