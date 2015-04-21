@@ -48,25 +48,12 @@ for exploit in inputData:
             for key, value in formFields.items():
                 fieldName = key
                 fieldValue = formFields.get(key)
-                script.write("driver.execute_script('"+fieldName+"').value+='"+fieldValue+"'\n")
-            #script.write("driver.find_element_by_name('"+fieldName+"').send_keys(Keys.RETURN)\n\n")
+                script.write("driver.execute_script('document.getElementByName(\""+fieldName+"\").value+=\""+fieldValue+"\"')\n")
             script.write("driver.submit()\n\n")
         if (firstLink):
-            scriptFile.write("url:"+url+" =>"+scriptName+"\n")
+            scriptFile.write("url:"+url+" =>"+scriptName+"\n\n")
             firstLink = False
         fileFields = step["fileFields"]
-        if fileFields:
-            fileFieldName = ""
-            filePath = ""
-            for key, value in fileFields.items():
-                fileFieldName = key
-                filePath = fileFields.get(key)
-                #script.write("driver.find_element_by_name('"+fileFieldName+"').send_keys('"+filePath+"')\n")
-                script.write("driver.execute_script('"+fileFieldName+"').value+='"+filePath+"'\n")
-            #under the assumption that we can only upload a single file before the page is forced to reload
-            #script.write("driver.find_element_by_name('"+fileFieldName+"').send_keys(Keys.RETURN)\n\n")
-            script.write("driver.submit()\n\n")
-
     script.close()
 
 scriptFile.write("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
