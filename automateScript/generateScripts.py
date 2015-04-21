@@ -49,7 +49,7 @@ for exploit in inputData:
                 fieldName = key
                 fieldValue = formFields.get(key)
                 script.write("driver.execute_script('document.getElementByName(\""+fieldName+"\").value+=\""+fieldValue+"\"')\n")
-            script.write("driver.submit()\n\n")
+            script.write("driver.element.submit()\n\n")
         if (firstLink):
             scriptFile.write("url:"+url+" =>"+scriptName+"\n\n")
             firstLink = False
