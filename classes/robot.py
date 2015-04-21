@@ -28,6 +28,23 @@ class Robot(object):
         self.seeds = seeds
         return
 
+    def transform(self, scrapy_out_file, endpoint_file):
+        entries = open(scrapy_out_file, 'r').readlines()
+        endpoints = []
+
+        for entry in entries:
+            entry = json.loads(entry)
+            endpoints.append({
+                'seed': entry['seed'],
+                'url': entry['url'],
+                'target': entry['target_url'] if 'target_url' in entry else entry['url'],
+                'method': entry['method'][0],
+                'params': entry['form_items'],
+                'files': entry['file_items'] if 'file_items' in entry else None
+            })
+
+        json.dump(endpoints, open(endpoint_file, 'w'), indent=True)
+
     def spider_closing(self):
         self.crawlers_running -= 1
         if self.crawlers_running == 0 :

@@ -144,6 +144,13 @@ class ScannerSpider(CrawlSpider):
                 if self._filter_requests(script_url):
                     yield Request(script_url, callback=self.parse_item)
 
+        for sel in response.xpath('//iframe'):
+            url_list = sel.xpath('@src').extract()
+            if len(url_list) > 0:
+                script_url = self.__to_absolute_url(response.url, url_list[0])
+                if self._filter_requests(script_url):
+                    yield Request(script_url, callback=self.parse_item)
+
         # Process all anchor tags
         match_url_re = "<a href=[\"|']([a-zA-Z:/\\.0-9?=&;-]+)"
         rg = re.compile(match_url_re, re.IGNORECASE | re.DOTALL)
