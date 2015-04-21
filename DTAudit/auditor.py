@@ -118,6 +118,11 @@ class auditor(JSONPipe):
                     print "found exploit, skip other payload"
                     break
 
+        for exploit in exploits:
+            for ex in exploit['exploit']:
+                if 'cookies' not in ex:
+                    ex['cookies'] = None
+
         return exploits
 
     def login(self, endpoint):
