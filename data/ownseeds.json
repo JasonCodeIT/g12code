@@ -1,0 +1,74 @@
+[
+  {
+    "auth":{
+      "url": "https://own7.com",
+      "target": "https://own7.com/own7secondpage.php",
+      "method": "POST",
+      "params": {
+        "user": "own7",
+        "password": "own7"
+      }
+    },
+    "start_url": "https://own7.com/own7secondpage.php"
+  },
+  {
+    "auth":{
+      "url": "https://own11.com/index.php",
+      "target": "https://own11.com/login.php",
+      "method": "POST",
+      "params": {
+        "username": "admin",
+        "password": "admin"
+      }
+    },
+    "start_url": "https://own11.com/login.php"
+  },
+  {
+    "auth":{
+      "url": "https://own11.com/index.php",
+      "target": "https://own11.com/login.php",
+      "method": "POST",
+      "params": {
+        "username": "user",
+        "password": "user"
+      }
+    },
+    "start_url": "https://own11.com/login.php"
+  },
+  {
+    "auth": null,
+    "start_url": "https://own1.com"
+  },
+  {
+    "auth": null,
+    "start_url": "https://own2.com"
+  },
+  {
+    "auth": null,
+    "start_url": "https://own3.com"
+  },
+  {
+    "auth": null,
+    "start_url": "https://own4.com"
+  },
+  {
+    "auth": null,
+    "start_url": "https://own5.com"
+  },
+  {
+    "auth": null,
+    "start_url": "https://own6.com"
+  },
+  {
+    "auth": null,
+    "start_url": "https://own8.com"
+  },
+  {
+    "auth": null,
+    "start_url": "https://own9.com"
+  },
+  {
+    "auth": null,
+    "start_url": "https://own10.com"
+  }
+]

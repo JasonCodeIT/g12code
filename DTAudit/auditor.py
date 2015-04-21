@@ -118,6 +118,11 @@ class auditor(JSONPipe):
                     print "found exploit, skip other payload"
                     break
 
+        for exploit in exploits:
+            for ex in exploit['exploit']:
+                if 'cookies' not in ex:
+                    ex['cookies'] = None
+
         return exploits
 
     def login(self, endpoint):
@@ -198,6 +203,8 @@ class auditor(JSONPipe):
 
             if method == 'GET':
                 r = self.http.get(target, params=bundle, verify=False)
+            elif method == 'COOKIE':
+                r = self.http.get(target, cookies=bundle, verify=False)
             else:
                 r = self.http.post(target, data=bundle, files=files, verify=False)
 
@@ -214,6 +221,13 @@ class auditor(JSONPipe):
                     query += "%s=%s&" % (k, bundle[k])
                 exploit.append({
                     'url': target + "?" + query,
+                    'formFields': None,
+                    'fileFields': None
+                })
+            elif method == 'COOKIE':
+                exploit.append({
+                    'url': target,
+                    'cookies': bundle,
                     'formFields': None,
                     'fileFields': None
                 })
