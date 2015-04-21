@@ -1,0 +1,118 @@
+[
+  {
+    "seed": -1,
+    "url": "https://own1.com/index.php",
+    "target": "https://own1.com/index.php",
+    "method": "GET",
+    "params": {
+      "page": "main"
+    },
+    "files": null
+  },
+  {
+    "seed": -1,
+    "url": "https://own2.com/index.html",
+    "target": "https://own2.com/own2submit.php",
+    "method": "GET",
+    "params": {
+      "comment": "",
+      "language": ""
+    },
+    "files": null
+  },
+  {
+    "seed": -1,
+    "url": "https://own3.com/index.html",
+    "target": "https://own3.com/own3submit.php",
+    "method": "GET",
+    "params": {
+      "path": "",
+      "file": ""
+    },
+    "files": null
+  },
+  {
+    "seed": -1,
+    "url": "https://own4.com/nextlevel/nextlevel/nextlevel/nextlevel/nextlevel/nextlevel/nextlevel/nextlevel/page11.php",
+    "target": "https://own4.com/nextlevel/nextlevel/nextlevel/nextlevel/nextlevel/nextlevel/nextlevel/nextlevel/page11.php",
+    "method": "COOKIE",
+    "params": {
+      "Own4Cookie": ""
+    },
+    "files": null
+  },
+  {
+    "seed": -1,
+    "url": "https://own6.com/own6page2.html",
+    "target": "https://own6.com/own6page2.html",
+    "method": "GET",
+    "params": {
+      "input": ""
+    },
+    "files": null
+  },
+  {
+    "seed": -1,
+    "url": "https://own6.com/own6page2.html",
+    "target": "https://own6.com/own6page2.html",
+    "method": "GET",
+    "params": {
+      "input": ""
+    },
+    "files": null
+  },
+  {
+    "seed": 0,
+    "url": "https://own7.com/pages/p3.php",
+    "target": "https://own7.com/pages/p3.php",
+    "method": "COOKIE",
+    "params": {
+      "UserDetails": ""
+    },
+    "files": null
+  },
+  {
+    "seed": -1,
+    "url": "https://own8.com/index.html",
+    "target": "https://own8.com/own8secondpage.php",
+    "method": "POST",
+    "params": {
+      "sex": "",
+      "comment": "",
+      "hiddenvalue": ""
+    },
+    "files": null
+  },
+  {
+    "seed": -1,
+    "url": "https://own9.com/index.php",
+    "target": "https://own9.com/own9submit.php",
+    "method": "POST",
+    "params": {
+      "MAX_FILE_SIZE": "10000000",
+      "FILE_PATH": ".",
+      "file": ""
+    },
+    "files": ["file"]
+  },
+  {
+    "seed": -1,
+    "url": "https://own10.com/index.html",
+    "target": "https://own10.com/own10submit.php",
+    "method": "POST",
+    "params": {
+      "in": ""
+    },
+    "files": null
+  },
+  {
+    "seed": 1,
+    "url": "https://own11.com/login.php",
+    "target": "https://own11.com/login.php",
+    "method": "GET",
+    "params": {
+      "file": ""
+    },
+    "files": null
+  }
+]
