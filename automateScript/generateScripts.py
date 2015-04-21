@@ -41,6 +41,7 @@ for exploit in inputData:
                 cookieName = key
                 cookieValue = cookies.get(key)
                 script.write("driver.add_cookie({'name:':'"+cookieName+"','value':'"+cookieValue+"'})\n")
+            script.write("driver.get('"+url+"')\n\n")
         if formFields:
             fieldName = ""
             fieldValue =""
