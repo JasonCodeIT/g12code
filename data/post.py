@@ -6,7 +6,7 @@ def post(url, data=None, cookies=None):
 
     return r.text.encode('utf-8')
 
-steps = {{{ steps }}}
+steps = json.loads('{{{ steps }}}')
 
 step = steps[0]
 

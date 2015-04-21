@@ -2,9 +2,7 @@
 from selenium.webdriver.common.keys import Keys
 import json
 
-
 steps = json.loads('{{{ steps }}}')
-
 
 counter = 0
 for step in steps:
