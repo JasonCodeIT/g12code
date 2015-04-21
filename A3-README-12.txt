@@ -68,10 +68,7 @@ Details:
 			path=../../../../
 			file=/etc/passwd
 	
-		own4:
-			COOKIE value is suppose to be set minimally:
-			../../../../../../../../../../../../etc/passwd
-			Printed at Page 11
+
 		own5:
 			passwd file printed in iframe. The form input is:
 			../../../../etc/passwd
