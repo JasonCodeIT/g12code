@@ -51,11 +51,13 @@ class factory(JSONPipe):
                 # Start from longest path
                 payloads.append([curr_file_path])
                 # Reduce
+                '''
                 for times in range(0, 14):
                     curr_file_path = curr_file_path[len(pre_style):]
                     payloads.append([curr_file_path])
                     if curr_file_path == "":
                         break
+                '''
 
         # 2-part Inputs
         list_of_second_input = ['passwd']
@@ -75,11 +77,13 @@ class factory(JSONPipe):
                     for times in range(0, 15):
                         curr_file_path = pre_style + curr_file_path
                     payloads.append([curr_file_path, second_input])
+                    '''
                     for times in range(0, 14):
                         curr_file_path = curr_file_path[len(pre_style):]
                         payloads.append([curr_file_path, second_input])
                         if curr_file_path == "":
                             break
+                    '''
 
         # Special Cases
         payloads.append(["../../../../../../../../var/www/attacker.com/public_html/", "image.jpg"])
