@@ -24,6 +24,7 @@ for exploit in inputData:
     scriptName+=".py"
     scriptPath = os.path.join(scriptFolder,scriptName)
     script = open(scriptPath,"w+")
+    func = open('post.py', 'r').readlines()
 
     script.write("from selenium import webdriver\n")
     script.write("from selenium.webdriver.common.keys import Keys\n\n")
@@ -66,7 +67,7 @@ for exploit in inputData:
                 cookieName = key
                 cookieValue = cookies.get(key)
                 cookie = "{\""+cookieName+"\":\""+cookieValue+"\"}"
-            script.write("import post.py\n\n")
+            script.write("".join(func) + "\n\n")
             script.write("post('"+url+"','"+data+"','"+cookie+"')")
 
     script.close()
