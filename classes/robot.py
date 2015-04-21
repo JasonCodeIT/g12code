@@ -1,8 +1,10 @@
+from operator import concat
+
 __author__ = 'Jason Poh'
+
+
 import os
 import json
-from classes import phase1
-from helpers import jsonhelper, filehelper
 
 # spider
 from scrape.spiders.scanner_spider import ScannerSpider
@@ -16,19 +18,19 @@ from scrapy.settings import Settings
 
 class Robot(object):
 
-    def __init__(self, start_url, depth=10, max_urls=10):
-        '''
-            :param start_url: the start URL to crawl from
-            :param depth: the depth to crawl (optional)
-            :param max_urls: maximum number of distinct URLs to crawl (optional)
-            :return:
-        '''
-        self.start_url = start_url
-        self.depth = depth          # int, optional
-        self.max_urls = max_urls    # int, optional
+    starturl = None
+    formdata = {}
+    contenttype = None
+    seed_idx = -1
 
-    def spider_closing(spider):
-        reactor.stop()
+    def __init__(self):
+        self.crawlers_running = 0
+        return
+
+    def spider_closing(self):
+        self.crawlers_running -= 1
+        if self.crawlers_running == 0 :
+            reactor.stop()
 
     def crawl(self):
         '''
@@ -39,22 +41,45 @@ class Robot(object):
             :return:None
         '''
 
+
         # delete existing file, if any
         if os.path.isfile("data/items.json"):
             os.remove("data/items.json")
 
-        spider = ScannerSpider(url=self.start_url)
-        crawler = Crawler(Settings())
-        crawler.settings.setdict({
-            'FEED_URI': "data/items.json",
-            'AJAXCRAWL_ENABLED': True,
-            'COOKIES_DEBUG': True,
-            'USER_AGAENT': "Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.60 Safari/537.36"
-            })
-        crawler.signals.connect(self.spider_closing, signal=signals.spider_closed)
-        crawler.configure()
-        crawler.crawl(spider)
-        crawler.start()
-        log.start(loglevel=log.DEBUG)
-        reactor.run()
+        # read seed file
+        with open('data/seeds.json') as data_file:
+            data = json.load(data_file)
+
+        for seed in data:
+            self.seed_idx += 1 # Counter
+            self.starturl = None
+            self.formdata = None
+            self.contenttype = None
+
+            if seed['auth'] is not None:
+                self.formdata = seed['auth']['params']
+                self.starturl = seed['auth']['target']
+                self.contenttype = seed['auth']['content_type']
+            else:
+                self.starturl = seed['start_url']
+
+
+
+            # Start Crawling All Below
+
+            spider = ScannerSpider(url=self.starturl, formdata=self.formdata, contenttype=self.contenttype, seed=self.seed_idx)
+            crawler = Crawler(Settings())
+            crawler.settings.setdict({
+                'START_URL': self.starturl,
+                'FORM_DATA': self.formdata,
+                'FEED_URI': "data/items.json",
+                'AJAXCRAWL_ENABLED': True,
+                'COOKIES_DEBUG': True,
+                'USER_AGAENT': "Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.60 Safari/537.36"
+                })
+            crawler.signals.connect(self.spider_closing, signal=signals.spider_closed)
+            crawler.configure()
+            crawler.crawl(spider)
+            self.crawlers_running += 1
+            crawler.start()
         return None

@@ -2,7 +2,7 @@ __author__ = 'Jason Poh'
 import re
 import urllib
 
-from scrape.settings import FORM_DATA, CONTENT_TYPE
+# from scrape.settings import FORM_DATA, CONTENT_TYPE
 from scrapy.contrib.spiders import CrawlSpider, Rule
 from scrapy.contrib.linkextractors.lxmlhtml import LxmlLinkExtractor
 from scrapy.http import Request, FormRequest
@@ -12,8 +12,10 @@ from scrapy import log
 
 
 class ScannerSpider(CrawlSpider):
+    seed = 999
     name = "scanner"
-
+    FORM_DATA = None
+    CONTENT_TYPE = None
     # matching app1.com/calendar.php?date= causing infinite follow
     # matching logout pages so scrapy will not logout from a session
     re1 = '=[1-2][0-9]{9}|logout|page=[0-9]{2}|upgrader|updater|delete|remove'
@@ -28,6 +30,9 @@ class ScannerSpider(CrawlSpider):
     def __init__(self, **kw):
         super(ScannerSpider, self).__init__(**kw)
         url = kw.get('url')
+        self.FORM_DATA = kw.get('formdata')
+        self.CONTENT_TYPE = kw.get('contenttype')
+        self.seed = kw.get('seed')
         if not url.startswith('http://') and not url.startswith('https://'):
             url = 'http://%s/' % url
         self.start_urls = [url]
@@ -35,19 +40,19 @@ class ScannerSpider(CrawlSpider):
 
     # Entry point of spider
     def parse_start_url(self, response):
-        if FORM_DATA is not None and str(len(FORM_DATA)) > 0:
+        if self.FORM_DATA is not None and str(len(self.FORM_DATA)) > 0:
             self.log("Starting crawling WITH login credentials...")
-            if CONTENT_TYPE is None or len(CONTENT_TYPE) < 1:
+            if self.CONTENT_TYPE is None or len(self.CONTENT_TYPE) < 1:
                 return [FormRequest.from_response(response,
-                                                  formdata=FORM_DATA,
+                                                  formdata=self.FORM_DATA,
                                                   callback=self.parse_item,
                                                  )]
 
             return Request(self.start_urls[0],
                       self.parse_item,
                       method="POST",
-                      body=urllib.urlencode(FORM_DATA),
-                      headers={'Content-Type': CONTENT_TYPE})
+                      body=urllib.urlencode(self.FORM_DATA),
+                      headers={'Content-Type': self.CONTENT_TYPE})
         else:
             self.log("Starting crawling WITHOUT login credentials...")
             return self.parse_item(response)
@@ -68,6 +73,7 @@ class ScannerSpider(CrawlSpider):
             rg = re.compile(regex, re.IGNORECASE|re.DOTALL)
             mm = rg.findall(response.url)
             mydict = {}
+            isAction = 0
             for m in mm:
                 querystring = "".join(m)
                 qs_url = response.url.replace("?"+querystring, "", 1)
@@ -79,10 +85,34 @@ class ScannerSpider(CrawlSpider):
                     tmp_qs = qs.split("=")
                     if len(tmp_qs) == 2:
                         qs_key = tmp_qs[0]
+                        if qs_key == 'action':
+                            isAction += 1
                         qs_val = tmp_qs[1]
                         mydict[qs_key] = qs_val
                 form['form_items'] = mydict
+                form['seed'] = self.seed
                 yield form
+
+                #patch for action=
+                if isAction == 1:
+                    mydict = {}
+                    form = FormItem()
+                    form['url'] = qs_url
+                    form['method'] = 'GET'
+                    mydict['action'] = 'load1'
+                    mydict['file'] = 'index.html'
+                    form['form_items'] = mydict
+                    form['seed'] = self.seed
+                    yield form
+                    mydict = {}
+                    form = FormItem()
+                    form['url'] = qs_url
+                    form['method'] = 'GET'
+                    mydict['action'] = 'loadExternalHtml'
+                    mydict['file'] = 'index.html'
+                    form['form_items'] = mydict
+                    form['seed'] = self.seed
+                    yield form
 
         # Process all inline script tags
         match_url_re = "['|\"]([a-zA-Z0-9_-]+[/a-zA-Z0-9_\\-\\.]*[?][/a-zA-Z0-9_\\-&=]*)['|\"]"
@@ -95,9 +125,12 @@ class ScannerSpider(CrawlSpider):
                 form_item = FormItem()
                 form_item['url'] = script_url
                 form_item['method'] = 'POST'
-                form_item['form_items'] = ['directory',
-                                           'dir,',
-                                           'file']
+                mydict = {}
+                mydict['directory'] = ''
+                mydict['dir'] = ''
+                mydict['file'] =  ''
+                form_item['form_items'] = mydict
+                form_item['seed'] = self.seed
                 yield form_item
             if self._filter_requests(script_url):
                 yield Request(script_url, callback=self.parse_item)
@@ -136,6 +169,7 @@ class ScannerSpider(CrawlSpider):
                 form['url'] = self.__to_absolute_url(response.url, url_parts[0])
                 form['method'] = 'GET'
                 form['form_items'] = [url_parts[1]]
+                form['seed'] = self.seed
                 yield form
 
         # Process all form tags
@@ -176,14 +210,20 @@ class ScannerSpider(CrawlSpider):
 
         # Extracts all params from all inputs in form
         params = sel.xpath('//*/@name').extract()
-        form['form_items'] = params
+        mydict = {}
+        for p in params:
+            mydict[p] = ''
+        form['form_items'] = mydict
         # return form
 
         # Extracts all params from all file inputs in form
         params = sel.xpath('//input[@type=\'file\']/@name').extract()
         if len(params) > 0:
-            form['file_items'] = params
-
+            mydict = {}
+            for p in params:
+                mydict[p] = ''
+            form['file_items'] = mydict
+        form['seed'] = self.seed
         return form
 
     def _process_cookie(self, response):
@@ -193,7 +233,13 @@ class ScannerSpider(CrawlSpider):
         cookie_item = FormItem()
         cookie_item['url'] = response.request.url
         cookie_item['method'] = 'COOKIE'
-        cookie_item['form_items'] = cookie.split(";")
+        mydict = {}
+        cookies = cookie.split(";")
+        for c in cookies:
+            cc = c.split("=", 1)
+            mydict[cc[0]] =  cc[1]
+        cookie_item['form_items'] = mydict
+        cookie_item['seed'] = self.seed
         return cookie_item
 
     def _filter_requests(self, url):

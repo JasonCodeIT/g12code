@@ -26,9 +26,9 @@ DEPTH_LIMIT = 0  # 0 = no limit
 # FORM_DATA = {'adminname': 'admin', 'password': 'admin'}
 
 #app1 user
-START_URL = "https://app1.com/users/login.php"
-FORM_DATA = {'username': 'bryce', 'password': 'bryce'}
-CONTENT_TYPE = "application/x-www-form-urlencoded"
+# START_URL = "https://app1.com/users/login.php"
+# FORM_DATA = {'username': 'bryce', 'password': 'bryce'}
+# CONTENT_TYPE = "application/x-www-form-urlencoded"
 
 #app3 nologin
 # START_URL = "https://app3.com"
