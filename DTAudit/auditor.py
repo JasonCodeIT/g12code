@@ -95,6 +95,9 @@ class auditor(JSONPipe):
         # Exploits to be returned
         exploits = []
 
+        # Clean attacker site
+        self.http.get("http://attacker.com/check.php?clean=true")
+
         counter = 0
 
         for endpoint in incomings[0]:
@@ -103,6 +106,9 @@ class auditor(JSONPipe):
                 auth = self.login(endpoint)
             else:
                 auth = None
+
+            if not endpoint['params']:
+                continue
 
             for payload in incomings[1]:
                 exploitable, exploit = self.exploit(endpoint, payload)
@@ -176,6 +182,9 @@ class auditor(JSONPipe):
         method = endpoint['method'].upper()
         target = endpoint['target']
         params = endpoint['params']
+
+        if not params:
+            return False, []
 
         entrance = endpoint['url'] if 'url' in endpoint else endpoint['target']
 
