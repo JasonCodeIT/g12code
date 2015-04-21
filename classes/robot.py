@@ -23,8 +23,9 @@ class Robot(object):
     contenttype = None
     seed_idx = -1
 
-    def __init__(self):
+    def __init__(self, seeds):
         self.crawlers_running = 0
+        self.seeds = seeds
         return
 
     def spider_closing(self):
@@ -41,13 +42,12 @@ class Robot(object):
             :return:None
         '''
 
-
         # delete existing file, if any
         if os.path.isfile("data/items.json"):
             os.remove("data/items.json")
 
         # read seed file
-        with open('data/seeds.json') as data_file:
+        with open(self.seeds) as data_file:
             data = json.load(data_file)
 
         for seed in data:
@@ -58,7 +58,7 @@ class Robot(object):
 
             if seed['auth'] is not None:
                 self.formdata = seed['auth']['params']
-                self.starturl = seed['auth']['target']
+                self.starturl = seed['auth']['url']
                 self.contenttype = seed['auth']['content_type']
             else:
                 self.starturl = seed['start_url']

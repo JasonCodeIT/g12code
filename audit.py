@@ -47,7 +47,7 @@ def main(argv):
                           script=script)
         audit.launch()
     elif action == 'robot':
-        spider = Robot()
+        spider = Robot(seeds)
         spider.crawl()
         log.start(loglevel=log.DEBUG)
         reactor.run()

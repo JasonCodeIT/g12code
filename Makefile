@@ -6,6 +6,9 @@ run:
 robot:
 	python audit.py --action=robot
 
+robot-own:
+	python audit.py --action=robot --seeds=data/ownseeds.json
+
 auditor-app1:
 	python audit.py --action=auditor --endpoints=output/endpoints/app1.json --payloads=data/payloads-tiny.json --exploits=output/exploits/app1.json
 
