@@ -73,6 +73,8 @@ Details:
 			../../../../../../../../../../../../etc/passwd
 			Printed at Page 11
 		own5:
+			passwd file printed in iframe. The form input is:
+			../../../../etc/passwd
 		
 		own6:
 			No DT here. Test-case for False positive
