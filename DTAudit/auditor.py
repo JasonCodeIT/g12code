@@ -153,7 +153,7 @@ class auditor(JSONPipe):
         if auth:
             params = self.seeds[seed]['auth']['params'].copy()
             page = self.http.get(auth['url'], verify=False)
-            html = lxml.html.document_fromstring(str(page.text))
+            html = lxml.html.document_fromstring(str(page.text.encode('utf-8')))
             inputs = html.xpath("//input[@type='hidden']")
             if 'grabs' in auth:
                 for field in inputs:
@@ -174,6 +174,8 @@ class auditor(JSONPipe):
 
     def exploit(self, endpoint, payload):
         exploit = []
+        exploitable = False
+        exp = []
 
         session = None
         if 'seed' in endpoint and endpoint['seed'] >= 0:
@@ -211,6 +213,8 @@ class auditor(JSONPipe):
 
         found = False
 
+        data = {}
+
         for bundle in bundles:
             for key in params:
                 if endpoint['files'] and key in endpoint['files']:
@@ -229,6 +233,7 @@ class auditor(JSONPipe):
 
             if exploitable:
                 found = True
+                data = bundle
                 break
 
         #cookies = requests.utils.dict_from_cookiejar(self.http.cookies)
@@ -237,8 +242,9 @@ class auditor(JSONPipe):
         if found:
             if method == 'GET':
                 query = ''
-                for k in bundle:
-                    query += "%s=%s&" % (k, bundle[k])
+                if data:
+                    for k in data:
+                        query += "%s=%s&" % (k, data[k])
                 exploit.append({
                     'url': target + "?" + query,
                     'cookies': cookies,
@@ -256,10 +262,9 @@ class auditor(JSONPipe):
                 exploit.append({
                     'url': entrance,
                     'cookies': cookies,
-                    'formFields': bundle,
+                    'formFields': data,
                     'fileFields': file_fields
                 })
-            # Ignore COOKIE for now
             else:
                 return False, []
 
