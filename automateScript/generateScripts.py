@@ -52,9 +52,6 @@ for exploit in inputData:
                     fieldValue = formFields.get(key)
                     script.write("driver.execute_script('document.getElementsByName(\""+fieldName+"\").value+=\""+fieldValue+"\"')\n")
                 script.write("driver.find_element_by_name('"+fieldName+"').submit()\n\n")
-            if (firstLink):
-                scriptFile.write("url:"+url+" =>"+scriptName+"\n\n")
-                firstLink = False
 
         else:
             fieldName = ""
@@ -69,6 +66,10 @@ for exploit in inputData:
                 cookie = "{\""+cookieName+"\":\""+cookieValue+"\"}"
             script.write("".join(func) + "\n\n")
             script.write("post('"+url+"','"+data+"','"+cookie+"')")
+
+        if (firstLink):
+            scriptFile.write("url:"+url+" =>"+scriptName+"\n\n")
+            firstLink = False
 
     script.close()
 
