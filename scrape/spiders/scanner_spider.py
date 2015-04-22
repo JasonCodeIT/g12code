@@ -122,6 +122,7 @@ class ScannerSpider(CrawlSpider):
         for m in mm:
             ajax_url = "".join(m)
             script_url = self.__to_absolute_url(response.url, ajax_url)
+            script_url = script_url.replace("js/", "");
             if "file" in script_url or "dir" in script_url:
                 form_item = FormItem()
                 form_item['url'] = script_url
@@ -129,10 +130,13 @@ class ScannerSpider(CrawlSpider):
                 mydict = {}
                 mydict['directory'] = ''
                 mydict['dir'] = ''
-                mydict['file'] =  ''
+                mydict['file'] = ''
                 form_item['form_items'] = mydict
                 form_item['seed'] = self.seed
                 yield form_item
+                form_item['method'] = 'GET'
+                yield form_item
+
             if self._filter_requests(script_url):
                 yield Request(script_url, callback=self.parse_item)
 
