@@ -5,7 +5,7 @@ import random
 
 #open json file
 
-inputFileName = "../output/exploits/all.json"
+inputFileName = "../output/exploits.json"
 scriptFolder = "scripts"+str(int(time.time()))
 if not os.path.exists(scriptFolder):
     os.makedirs(scriptFolder)
@@ -38,6 +38,7 @@ for exploit in inputData:
         cookies = step["cookies"]
         if "app8" not in url:
             script.write("driver.get('"+url+"')\n\n")
+            script.write("driver.delete_all_cookies()\n\n")
             if cookies:
                 for key, value in cookies.items():
                     cookieName = key

@@ -1,0 +1,212 @@
+[
+  {
+    "seed": 1,
+    "url": "https://app1.com/pictures/upload.php",
+    "target": "https://app1.com/pictures/upload.php",
+    "method": "POST",
+    "params": {
+      "tag": "",
+      "name": "",
+      "title": "",
+      "price": "",
+      "pic": ""
+    },
+    "files": ["pic"]
+  },
+  {
+    "seed": 23,
+    "url": "https://app11.com/ajax_get_file_listing.php",
+    "target": "https://app11.com/ajax_get_file_listing.php",
+    "method": "GET",
+    "params": {
+      "limit": 10,
+      "view": "thumbnail",
+      "search": 1,
+      "search_name": "",
+      "search_recursively": 0,
+      "search_mtime_from": "",
+      "search_mtime_to": "",
+      "search_folder": "./"
+    },
+    "files": null
+  }
+,
+  {
+    "seed": -1,
+    "url": "https://app3.com/js/netron.js",
+    "target": "https://app3.com/js/netron.js",
+    "method": "COOKIE",
+    "params": {"stylesheet": "ayti"},
+    "files": {}
+  },
+  {
+    "seed": -1,
+    "url": "https://app3.com/js/script.js",
+    "target": "https://app3.com/js/script.js",
+    "method": "COOKIE",
+    "params": {"stylesheet": "ayti"},
+    "files": {}
+  },
+  {
+    "seed": -1,
+    "url": "https://app3.com/windows/function.php?file=",
+    "target": "https://app3.com/windows/function.php?file=",
+    "method": "POST",
+    "params": {
+      "directory": "",
+      "dir": "",
+      "file": ""
+    },
+    "files": {}
+  },
+  {
+    "seed": -1,
+    "url": "https://app3.com/windows/hotpatch.php?file=",
+    "target": "https://app3.com/windows/hotpatch.php?file=",
+    "method": "POST",
+    "params": {
+      "directory": "",
+      "dir": "",
+      "file": ""
+    },
+    "files": {}
+  },
+  {
+    "seed": -1,
+    "url": "https://app3.com/windows/code.php?file=",
+    "target": "https://app3.com/windows/code.php?file=",
+    "method": "POST",
+    "params": {
+      "directory": "",
+      "dir": "",
+      "file": ""
+    },
+    "files": {}
+  },
+  {
+    "seed": -1,
+    "url": "https://app3.com/windows/exploit.php?file=",
+    "target": "https://app3.com/windows/exploit.php?file=",
+    "method": "POST",
+    "params": {
+      "directory": "",
+      "dir": "",
+      "file": ""
+    },
+    "files": {}
+  },
+  {
+    "seed": -1,
+    "url": "https://app3.com/windows/function.php",
+    "target": "https://app3.com/windows/function.php",
+    "method": "GET",
+    "params": {"file": ""},
+    "files": {}
+  },
+  {
+    "seed": -1,
+    "url": "https://app3.com/windows/help.php",
+    "target": "https://app3.com/windows/help.php",
+    "method": "GET",
+    "params": {"type": ""},
+    "files": {}
+  },
+  {
+    "seed": -1,
+    "url": "https://app3.com/windows/hotpatch.php",
+    "target": "https://app3.com/windows/hotpatch.php",
+    "method": "GET",
+    "params": {"file": ""},
+    "files": {}
+  },
+  {
+    "seed": -1,
+    "url": "https://app3.com/windows/code.php",
+    "target": "https://app3.com/windows/code.php",
+    "method": "GET",
+    "params": {"file": ""},
+    "files": {}
+  },
+  {
+    "seed": -1,
+    "url": "https://app3.com/windows/exploit.php",
+    "target": "https://app3.com/windows/exploit.php",
+    "method": "GET",
+    "params": {"file": ""},
+    "files": {}
+  },
+  {
+    "seed": -1,
+    "url": "https://app3.com/js/hotpatch.js",
+    "target": "https://app3.com/js/hotpatch.js",
+    "method": "COOKIE",
+    "params": {"stylesheet": "ayti"},
+    "files": {}
+  },
+  {
+    "seed": -1,
+    "url": "https://app3.com/js/exploit.js",
+    "target": "https://app3.com/js/exploit.js",
+    "method": "COOKIE",
+    "params": {"stylesheet": "ayti"},
+    "files": {}
+  }
+,
+  {
+    "seed": -1,
+    "url": "https://app5.com/www/js/scripts.php",
+    "target": "https://app5.com/www/js/scripts.php",
+    "method": "GET",
+    "params": {
+      "load": ""
+    },
+    "files": null
+  }
+,
+  {
+    "seed": 15,
+    "url": "https://app6.com/zimplit.php",
+    "target": "https://app6.com/zimplit.php",
+    "method": "GET",
+    "params": {
+      "action": "load1",
+      "file": "index.html"
+    },
+    "files": null
+  }
+,
+  {
+    "seed": 17,
+    "url": "https://app7.com/oc-admin/",
+    "target": "https://app7.com/oc-admin/",
+    "method": "GET",
+    "params": {
+      "page": "appearance",
+      "action": "render",
+      "file": "oc-content/themes/bender/admin/header.php"
+    },
+    "files": null
+  }
+,
+  {
+    "seed": 19,
+    "url": "https://app8.com/upload/admin/index.php?route=common/filemanager/directory&token=xxx",
+    "target": "https://app8.com/upload/admin/index.php?route=common/filemanager/directory&token=xxx",
+    "method": "POST",
+    "params": {
+      "directory": "..././..././..././..././..././..././..././"
+    },
+    "files": null
+  }
+,
+  {
+    "seed": 20,
+    "url": "https://app9.com/index-test.php/admin/translationManager",
+    "target": "https://app9.com/index-test.php/admin/translationManager",
+    "method": "GET",
+    "params": {
+      "file": "en.php"
+    },
+    "files": null
+  }
+]

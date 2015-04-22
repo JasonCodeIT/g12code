@@ -4,6 +4,7 @@
       "url": "https://own7.com",
       "target": "https://own7.com/own7secondpage.php",
       "method": "POST",
+      "content_type": null,
       "params": {
         "user": "own7",
         "password": "own7"
@@ -16,6 +17,7 @@
       "url": "https://own11.com/index.php",
       "target": "https://own11.com/login.php",
       "method": "POST",
+      "content_type": null,
       "params": {
         "username": "admin",
         "password": "admin"
@@ -28,6 +30,7 @@
       "url": "https://own11.com/index.php",
       "target": "https://own11.com/login.php",
       "method": "POST",
+      "content_type": null,
       "params": {
         "username": "user",
         "password": "user"
@@ -70,5 +73,9 @@
   {
     "auth": null,
     "start_url": "https://own10.com"
+  },
+  {
+    "auth": null,
+    "start_url": "https://own11.com"
   }
 ]

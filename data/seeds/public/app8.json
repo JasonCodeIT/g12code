@@ -1,0 +1,29 @@
+[
+  {
+    "auth":{
+      "url": "https://app8.com/upload/index.php?route=account/login",
+      "target": "https://app8.com/upload/index.php?route=account/login",
+      "method": "POST",
+      "content_type": null,
+      "params": {
+        "email": "test@test.com",
+        "password": "test"
+      }
+    },
+    "start_url": "https://app8.com/"
+  },
+  {
+    "auth":{
+      "url": "https://app8.com/upload/admin",
+      "target": "https://app8.com/upload/admin/index.php?route=common/login",
+      "method": "POST",
+      "content_type": null,
+      "params": {
+        "username": "admin",
+        "password": "admin"
+      },
+      "token": ["token"]
+    },
+    "start_url": "FOLLOW_REDIRECT"
+  }
+]

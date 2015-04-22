@@ -1,0 +1,15 @@
+[
+  {
+    "auth":{
+      "url": "https://app11.com/ajax_login.php",
+      "target": "https://app11.com/ajax_login.php",
+      "method": "POST",
+      "content_type": null,
+      "params": {
+        "username": "admin",
+        "password": "admin"
+      }
+    },
+    "start_url": "https://app11.com/ajaxfilemanager.php"
+  }
+]

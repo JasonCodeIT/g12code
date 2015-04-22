@@ -1,0 +1,54 @@
+[
+  {
+    "auth":{
+      "url": "https://app1.com/admin/index.php?page=login",
+      "target": "https://app1.com/admin/index.php?page=login",
+      "method": "POST",
+      "content_type": null,
+      "params": {
+        "adminname": "admin",
+        "password": "admin"
+      }
+    },
+    "start_url": "https://app1.com/admin/index.php?page=home"
+  },
+  {
+    "auth":{
+      "url": "https://app1.com/users/login.php",
+      "target": "https://app1.com/users/login.php",
+      "method": "POST",
+      "content_type": "application/x-www-form-urlencoded",
+      "params": {
+        "username": "scanner1",
+        "password": "scanner1"
+      }
+    },
+    "start_url": "https://app1.com/users/home.php"
+  },
+  {
+    "auth":{
+      "url": "https://app1.com/users/login.php",
+      "target": "https://app1.com/users/login.php",
+      "method": "POST",
+      "content_type": "application/x-www-form-urlencoded",
+      "params": {
+        "username": "scanner2",
+        "password": "scanner2"
+      }
+    },
+    "start_url": "https://app1.com/users/home.php"
+  },
+  {
+    "auth":{
+      "url": "https://app1.com/users/login.php",
+      "target": "https://app1.com/users/login.php",
+      "method": "POST",
+      "content_type": "application/x-www-form-urlencoded",
+      "params": {
+        "username": "bryce",
+        "password": "bryce"
+      }
+    },
+    "start_url": "https://app1.com/users/home.php"
+  }
+]
