@@ -64,7 +64,7 @@ class Robot(object):
         for scrapy_out_file in outputs:
             entries = open(scrapy_out_file, 'r').readlines()
             for entry in entries:
-                log.err(entry)
+                #log.err(entry)
                 entry = json.loads(entry)
                 endpoint = {
                     'seed': entry['seed'],
