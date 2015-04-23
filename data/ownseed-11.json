@@ -1,0 +1,28 @@
+[
+  {
+    "auth":{
+      "url": "https://own11.com",
+      "target": "https://own11.com/login.php",
+      "method": "POST",
+      "content_type": null,
+      "params": {
+        "username": "admin",
+        "password": "admin"
+      }
+    },
+    "start_url": "https://own11.com/login.php"
+  },
+  {
+    "auth":{
+      "url": "https://own11.com",
+      "target": "https://own11.com/login.php",
+      "method": "POST",
+      "content_type": null,
+      "params": {
+        "username": "user",
+        "password": "user"
+      }
+    },
+    "start_url": "https://own11.com/login.php"
+  }
+]

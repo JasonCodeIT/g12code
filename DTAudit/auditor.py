@@ -6,6 +6,7 @@ import json
 from urlparse import urlparse
 from urlparse import parse_qsl
 import lxml.html
+from util import Colors
 
 
 def domain(url):
@@ -102,33 +103,46 @@ class auditor(JSONPipe):
 
         for endpoint in incomings[0]:
 
+            auth = None
             if 'seed' in endpoint and endpoint['seed'] >= 0:
                 auth = self.login(endpoint)
-            else:
-                auth = None
 
             if not endpoint['params']:
                 continue
 
+            print "Exploiting: ", endpoint['method'], ': ', endpoint['target'],
+
+            found = False
+            payload_counter = 1
             for payload in incomings[1]:
                 exploitable, exploit = self.exploit(endpoint, payload)
+                # print '{}\r'.format(" -- Injecting payload (%d/%d)" % (counter, len(incomings[1]))),
+                payload_counter += 1
 
                 if exploitable:
                     counter += 1
+                    found = True
                     if auth:
-                        #exploit = [auth] + exploit
-                        exploit = exploit
+                        exploit = [auth] + exploit
                     exploits.append({
                         'name': 'exploit-' + str(counter),
                         'exploit': exploit
                     })
-                    print "found exploit, skip other payload"
+                    print
+                    print auth
+                    print exploit
+                    print Colors.OKGREEN, " -- found exploit with payload:", payload, Colors.ENDC
+                    print " -- skip other payload"
                     break
+            if not found:
+                print Colors.FAIL, " -- No exploits found", Colors.ENDC
 
         for exploit in exploits:
             for ex in exploit['exploit']:
                 if 'cookies' not in ex:
                     ex['cookies'] = None
+                if 'fileFields' not in ex:
+                    ex['fileFields'] = None
                 if ex['fileFields']:
                     for k in ex['fileFields']:
                         ex['formFields'][k] = ex['fileFields'][k]
@@ -145,12 +159,12 @@ class auditor(JSONPipe):
                 "token": None,
             }
         else:
-            return
+            return self.session[seed]['auth_endpoint']
 
         auth = self.seeds[seed]['auth']
-        print "login with: ", auth
 
         if auth:
+            print "login with: ", auth
             params = self.seeds[seed]['auth']['params'].copy()
             page = self.http.get(auth['url'], verify=False)
             html = lxml.html.document_fromstring(str(page.text.encode('utf-8')))
@@ -166,11 +180,18 @@ class auditor(JSONPipe):
                 self.session[seed]['token'] = parse_token(r.request.url, auth['token'])
             self.session[seed]['login'] = True
 
-            return {
+            auth_endpoint = {
+                'method': 'GET',
                 'url': auth['url'],
+                'cookies': None,
+                'token': auth['token'] if 'token' in auth else None,
                 'formFields': params,
                 'fileFields': None
             }
+
+            self.session[seed]['auth_endpoint'] = auth_endpoint
+
+            return auth_endpoint
 
     def exploit(self, endpoint, payload):
         exploit = []
@@ -203,7 +224,6 @@ class auditor(JSONPipe):
                     entrance += "&" + k + "=" + session['token'][k]
             for k in session['token']:
                 target += "&" + k + "=" + session['token'][k]
-        print method, ": ", target
 
         if files:
             for k in files:
@@ -220,14 +240,21 @@ class auditor(JSONPipe):
                 if endpoint['files'] and key in endpoint['files']:
                     bundle.pop(key, None)
 
-            print "attempting:", bundle, file_fields
+            try:
 
-            if method == 'GET':
-                r = self.http.get(target, params=bundle, verify=False)
-            elif method == 'COOKIE':
-                r = self.http.get(target, cookies=bundle, verify=False)
-            else:
-                r = self.http.post(target, data=bundle, files=files, verify=False)
+                if method == 'GET':
+                    r = self.http.get(target, params=bundle, verify=False)
+                elif method == 'COOKIE':
+                    bundle.pop('PHPSESSID', None)
+                    r = self.http.get(target, cookies=bundle, verify=False)
+                else:
+                    if files:
+                        r = self.http.post(target, data=bundle, files=files, verify=False)
+                    else:
+                        r = self.http.post(target, data=bundle, verify=False)
+            except requests.exceptions.InvalidURL as e:
+                print e
+                pass
 
             exploitable, exp = self.verify(r, target)
 
@@ -236,39 +263,45 @@ class auditor(JSONPipe):
                 data = bundle
                 break
 
-        #cookies = requests.utils.dict_from_cookiejar(self.http.cookies)
         cookies = self.http.cookies.get_dict(domain(target))
 
         if found:
+            token = None
+            if session and 'token' in session and session['token']:
+                token = session['token']
             if method == 'GET':
                 query = ''
                 if data:
                     for k in data:
                         query += "%s=%s&" % (k, data[k])
                 exploit.append({
+                    'method': method,
                     'url': target + "?" + query,
+                    'token': token,
                     'cookies': cookies,
                     'formFields': None,
                     'fileFields': None
                 })
             elif method == 'COOKIE':
                 exploit.append({
+                    'method': method,
                     'url': target,
+                    'token': token,
                     'cookies': cookies,
-                    'formFields': None,
+                    'formFields': data,
                     'fileFields': None
                 })
             elif method == 'POST':
                 exploit.append({
+                    'method': method,
                     'url': entrance,
+                    'token': token,
                     'cookies': cookies,
                     'formFields': data,
                     'fileFields': file_fields
                 })
             else:
                 return False, []
-
-        print 'exploitable: ', exploitable
 
         return exploitable, exploit + exp
 
@@ -283,7 +316,10 @@ class auditor(JSONPipe):
             link = r.text
             if not r.text == 'CLEAN':
                 exploit.append({
+                    'method': 'GET',
                     'url': link,
+                    'cookies': None,
+                    'token': None,
                     'formFields': None,
                     'fileFields': None
                 })

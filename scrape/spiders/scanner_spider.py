@@ -180,7 +180,7 @@ class ScannerSpider(CrawlSpider):
                 form = FormItem()
                 form['url'] = self.__to_absolute_url(response.url, url_parts[0])
                 form['method'] = 'GET'
-                form['form_items'] = [url_parts[1]]
+                form['form_items'] = {url_parts[1]}
                 form['seed'] = self.seed
                 yield form
 
@@ -235,10 +235,11 @@ class ScannerSpider(CrawlSpider):
         # Extracts all params from all file inputs in form
         params = sel.xpath('//input[@type=\'file\']/@name').extract()
         if len(params) > 0:
-            mydict = {}
+            files = []
             for p in params:
-                mydict[p] = ''
-            form['file_items'] = mydict
+                # mydict[p] = ''
+                files.append(p)
+            form['file_items'] = files
         form['seed'] = self.seed
         return form
 

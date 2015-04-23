@@ -36,7 +36,7 @@ class automator(JSONPipe):
         return : a list of paths to the generated selenium scripts
         """
 
-        script_folder = "scripts" + str(int(time.time()))
+        script_folder = "output/scripts"
         if not os.path.exists(script_folder):
             os.makedirs(script_folder)
 
@@ -45,7 +45,6 @@ class automator(JSONPipe):
         # extract data from json file
         for exploit in incomings[0]:
             script_name = exploit["name"] + '.py'
-            script_name += ".py"
             script_path = os.path.join(script_folder, script_name)
 
             script = open(script_path, "w+")

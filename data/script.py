@@ -4,16 +4,18 @@ import json
 
 steps = json.loads('{{{ steps }}}')
 
+driver = webdriver.Firefox()
+
 counter = 0
 for step in steps:
+    method = step['method']
     url = step['url']
     form_fields = step['formFields']
     cookies = step['cookies']
 
-    driver = webdriver.Firefox()
-
     driver.get(url)
 
+    '''
     if counter == 0:
         driver.delete_all_cookies()
 
@@ -22,8 +24,9 @@ for step in steps:
                 driver.add_cookie({'name': name, 'value': value})
 
         driver.get(url)
+    '''
 
-    if form_fields:
+    if method in ['GET', 'POST'] and form_fields:
         submit = None
         for name, value in form_fields.items():
             elem = driver.find_element_by_name(name)
@@ -41,3 +44,8 @@ for step in steps:
                     elem.value = value;
                 ''', elem, value)
         submit.send_keys(Keys.RETURN)
+
+    elif method in ['COOKIE'] and form_fields:
+        for name, value in form_fields.items():
+            driver.delete_cookie(name)
+            driver.add_cookie({'name': name, 'value': value})

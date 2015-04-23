@@ -5,6 +5,10 @@ __author__ = 'Jason Poh'
 
 import os
 import json
+import hashlib
+
+from urlparse import urlparse
+from urlparse import parse_qsl
 
 # spider
 from scrape.spiders.scanner_spider import ScannerSpider
@@ -30,20 +34,52 @@ class Robot(object):
         self.seeds = seeds
         return
 
+    def signature(self, endpoint):
+        o = urlparse(endpoint['target'])
+        q = parse_qsl(o.query)
+
+        string = str(endpoint['seed']) + endpoint['method'] + o.scheme + o.hostname
+
+        if o.port:
+            string += o.port
+        if o.path:
+            string += o.path
+
+        for name, value in q:
+            string += name
+
+        if endpoint['params']:
+            for name, value in endpoint['params'].items():
+                string += name
+
+        if endpoint['files']:
+            for name in endpoint['files']:
+                string += name
+
+        return hashlib.sha224(string).hexdigest()
+
     def transform(self, outputs, endpoint_file):
         endpoints = []
+        hashes = []
         for scrapy_out_file in outputs:
             entries = open(scrapy_out_file, 'r').readlines()
             for entry in entries:
+                log.err(entry)
                 entry = json.loads(entry)
-                endpoints.append({
+                endpoint = {
                     'seed': entry['seed'],
                     'url': entry['url'],
                     'target': entry['target_url'] if 'target_url' in entry else entry['url'],
-                    'method': entry['method'],
+                    'method': entry['method'].upper(),
                     'params': entry['form_items'],
                     'files': entry['file_items'] if 'file_items' in entry else None
-                })
+                }
+
+                hash = self.signature(endpoint)
+
+                if hash not in hashes:
+                    endpoints.append(endpoint)
+                    hashes.append(hash)
         json.dump(endpoints, open(endpoint_file, 'w'), indent=True)
 
     def spider_closing(self):

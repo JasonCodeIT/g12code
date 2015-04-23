@@ -1,0 +1,532 @@
+{"url": "https://app1.com/guestbook.php", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/guestbook.php", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"comment": "", "query": "", "name": ""}}
+{"url": "https://app1.com/guestbook.php", "target_url": "https://app1.com/guestbook.php", "seed": 2, "method": ["POST"], "form_items": {"comment": "", "query": "", "name": ""}}
+{"url": "https://app1.com/users/register.php", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/users/register.php", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"username": "", "firstname": "", "lastname": "", "query": "", "password": "", "againpass": ""}}
+{"url": "https://app1.com/users/register.php", "target_url": "https://app1.com/users/register.php", "seed": 2, "method": ["POST"], "form_items": {"username": "", "firstname": "", "lastname": "", "query": "", "password": "", "againpass": ""}}
+{"url": "https://app1.com/users/login.php", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/users/login.php", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"username": "", "query": "", "password": ""}}
+{"url": "https://app1.com/users/login.php", "target_url": "https://app1.com/users/login.php", "seed": 2, "method": ["POST"], "form_items": {"username": "", "query": "", "password": ""}}
+{"url": "https://app1.com/passcheck.php", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/passcheck.php", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"query": "", "password": ""}}
+{"url": "https://app1.com/passcheck.php", "target_url": "https://app1.com/passcheck.php", "seed": 2, "method": ["POST"], "form_items": {"query": "", "password": ""}}
+{"url": "https://app1.com/pictures/recent.php", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/pictures/recent.php", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"query": ""}}
+{"url": "https://app1.com/pictures/upload.php", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"target_url": "https://app1.com/pictures/search.php", "form_items": {"MAX_FILE_SIZE": "", "name": "", "title": "", "price": "", "pic": "", "tag": "", "query": ""}, "url": "https://app1.com/pictures/upload.php", "seed": 2, "file_items": {"pic": ""}, "method": ["get"]}
+{"target_url": "https://app1.com/pictures/upload.php", "form_items": {"MAX_FILE_SIZE": "", "name": "", "title": "", "price": "", "pic": "", "tag": "", "query": ""}, "url": "https://app1.com/pictures/upload.php", "seed": 2, "file_items": {"pic": ""}, "method": ["POST"]}
+{"url": "https://app1.com/users/home.php", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/users/home.php", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"query": "", "PLAY": "", "QUALITY": "", "LOOP": "", "MOVIE": ""}}
+{"url": "https://app1.com/tos.php", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"query": ""}}
+{"url": "https://app1.com/tos.php", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"query": ""}}
+{"url": "https://app1.com/pictures/purchased.php", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/pictures/purchased.php", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"query": ""}}
+{"url": "https://app1.com/users/view.php?userid=5", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/users/view.php", "seed": 2, "method": "GET", "form_items": {"userid": "5"}}
+{"url": "https://app1.com/users/view.php?userid=5", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"query": ""}}
+{"url": "https://app1.com/users/similar.php", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/users/similar.php", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"query": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=35", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 2, "method": "GET", "form_items": {"picid": "35"}}
+{"url": "https://app1.com/pictures/view.php?picid=35", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=35", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 2, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=36", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 2, "method": "GET", "form_items": {"picid": "36"}}
+{"url": "https://app1.com/pictures/view.php?picid=36", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=36", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 2, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=37", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 2, "method": "GET", "form_items": {"picid": "37"}}
+{"url": "https://app1.com/pictures/view.php?picid=37", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=38", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 2, "method": "GET", "form_items": {"picid": "38"}}
+{"url": "https://app1.com/pictures/view.php?picid=38", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=37", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 2, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=38", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 2, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=40", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 2, "method": "GET", "form_items": {"picid": "40"}}
+{"url": "https://app1.com/pictures/view.php?picid=40", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=41", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 2, "method": "GET", "form_items": {"picid": "41"}}
+{"url": "https://app1.com/pictures/view.php?picid=42", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 2, "method": "GET", "form_items": {"picid": "42"}}
+{"url": "https://app1.com/pictures/view.php?picid=43", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 2, "method": "GET", "form_items": {"picid": "43"}}
+{"url": "https://app1.com/pictures/view.php?picid=43", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=44", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 2, "method": "GET", "form_items": {"picid": "44"}}
+{"url": "https://app1.com/pictures/view.php?picid=44", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/cart/review.php", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/cart/review.php", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"query": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=40", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 2, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=42", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=43", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 2, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=44", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 2, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/cart/review.php", "target_url": "https://app1.com/cart/action.php?action=delete", "seed": 2, "method": ["POST"], "form_items": {"query": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=41", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=41", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 2, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=42", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 2, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/calendar.php", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/calendar.php", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"query": ""}}
+{"url": "https://app1.com/users/sample.php?userid=1", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/users/sample.php", "seed": 2, "method": "GET", "form_items": {"userid": "1"}}
+{"url": "https://app1.com/users/sample.php?userid=1", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"query": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=24", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 2, "method": "GET", "form_items": {"picid": "24"}}
+{"url": "https://app1.com/pictures/view.php?picid=24", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=26", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 2, "method": "GET", "form_items": {"picid": "26"}}
+{"url": "https://app1.com/pictures/view.php?picid=24", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 2, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=26", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=26", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 2, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=25", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 2, "method": "GET", "form_items": {"picid": "25"}}
+{"url": "https://app1.com/pictures/view.php?picid=27", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 2, "method": "GET", "form_items": {"picid": "27"}}
+{"url": "https://app1.com/pictures/view.php?picid=27", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=19", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 2, "method": "GET", "form_items": {"picid": "19"}}
+{"url": "https://app1.com/users/view.php?userid=4", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/users/view.php", "seed": 2, "method": "GET", "form_items": {"userid": "4"}}
+{"url": "https://app1.com/pictures/view.php?picid=25", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=25", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 2, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=27", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 2, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/users/view.php?userid=4", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"query": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=19", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=19", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 2, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=22", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 2, "method": "GET", "form_items": {"picid": "22"}}
+{"url": "https://app1.com/pictures/view.php?picid=22", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/admin/index.php?page=login", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/admin/index.php", "seed": 2, "method": "GET", "form_items": {"page": "login"}}
+{"url": "https://app1.com/admin/index.php?page=login", "target_url": "https://app1.com/admin/index.php?page=login", "seed": 2, {"url": "https://app1.com/tos.php", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/tos.php", "target_url": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"query": ""}}
+{"url": "https://app1.com/", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/", "target_url": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"query": ""}}
+{"url": "https://app1.com/calendar.php", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/calendar.php", "target_url": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"query": ""}}
+{"url": "https://app1.com/users/sample.php?userid=1", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/users/sample.php", "seed": 1, "method": "GET", "form_items": {"userid": "1"}}
+{"url": "https://app1.com/users/sample.php?userid=1", "target_url": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"query": ""}}
+{"url": "https://app1.com/cart/review.php", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/cart/review.php", "target_url": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"query": ""}}
+{"url": "https://app1.com/cart/review.php", "target_url": "https://app1.com/cart/action.php?action=delete", "seed": 1, "method": ["POST"], "form_items": {"query": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=7", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 1, "method": "GET", "form_items": {"picid": "7"}}
+{"url": "https://app1.com/pictures/view.php?picid=7", "target_url": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=7", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 1, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/users/register.php", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/users/register.php", "target_url": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"username": "", "firstname": "", "lastname": "", "query": "", "password": "", "againpass": ""}}
+{"url": "https://app1.com/users/register.php", "target_url": "https://app1.com/users/register.php", "seed": 1, "method": ["POST"], "form_items": {"username": "", "firstname": "", "lastname": "", "query": "", "password": "", "againpass": ""}}
+{"url": "https://app1.com/users/login.php", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/users/login.php", "target_url": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"username": "", "query": "", "password": ""}}
+{"url": "https://app1.com/admin/index.php?page=login", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/admin/index.php", "seed": 1, "method": "GET", "form_items": {"page": "login"}}
+{"url": "https://app1.com/admin/index.php?page=login", "target_url": "https://app1.com/admin/index.php?page=login", "seed": 1, "method": ["POST"], "form_items": {"password": "", "adminname": ""}}
+{"url": "https://app1.com/users/login.php", "target_url": "https://app1.com/users/login.php", "seed": 1, "method": ["POST"], "form_items": {"username": "", "query": "", "password": ""}}
+{"url": "https://app1.com/guestbook.php", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/guestbook.php", "target_u"method": ["POST"], "form_items": {"password": "", "adminname": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=28", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 2, "method": "GET", "form_items": {"picid": "28"}}
+{"url": "https://app1.com/pictures/view.php?picid=22", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 2, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=28", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=28", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 2, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=18", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 2, "method": "GET", "form_items": {"picid": "18"}}
+{"url": "https://app1.com/pictures/view.php?picid=18", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=31", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 2, "method": "GET", "form_items": {"picid": "31"}}
+{"url": "https://app1.com/pictures/view.php?picid=23", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 2, "method": "GET", "form_items": {"picid": "23"}}
+{"url": "https://app1.com/pictures/view.php?picid=23", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=18", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 2, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=31", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=31", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 2, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=23", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 2, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=21", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 2, "method": "GET", "form_items": {"picid": "21"}}
+{"url": "https://app1.com/pictures/view.php?picid=7", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 2, "method": "GET", "form_items": {"picid": "7"}}
+{"url": "https://app1.com/pictures/view.php?picid=7", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=7", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 2, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=20", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 2, "method": "GET", "form_items": {"picid": "20"}}
+{"url": "https://app1.com/pictures/view.php?picid=20", "target_url": "https://app1.com/pictures/serl": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"comment": "", "query": "", "name": ""}}
+{"url": "https://app1.com/passcheck.php", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/passcheck.php", "target_url": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"query": "", "password": ""}}
+{"url": "https://app1.com/guestbook.php", "target_url": "https://app1.com/guestbook.php", "seed": 1, "method": ["POST"], "form_items": {"comment": "", "query": "", "name": ""}}
+{"url": "https://app1.com/passcheck.php", "target_url": "https://app1.com/passcheck.php", "seed": 1, "method": ["POST"], "form_items": {"query": "", "password": ""}}
+{"url": "https://app1.com/pictures/recent.php", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/pictures/recent.php", "target_url": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"query": ""}}
+{"url": "https://app1.com/pictures/upload.php", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"target_url": "https://app1.com/pictures/search.php", "form_items": {"MAX_FILE_SIZE": "", "name": "", "title": "", "price": "", "pic": "", "tag": "", "query": ""}, "url": "https://app1.com/pictures/upload.php", "seed": 1, "file_items": {"pic": ""}, "method": ["get"]}
+{"target_url": "https://app1.com/pictures/upload.php", "form_items": {"MAX_FILE_SIZE": "", "name": "", "title": "", "price": "", "pic": "", "tag": "", "query": ""}, "url": "https://app1.com/pictures/upload.php", "seed": 1, "file_items": {"pic": ""}, "method": ["POST"]}
+{"url": "https://app1.com/users/home.php", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/users/home.php", "target_url": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"query": "", "PLAY": "", "QUALITY": "", "LOOP": "", "MOVIE": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=35", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 1, "method": "GET", "form_items": {"picid": "35"}}
+{"url": "https://app1.com/pictures/view.php?picid=35", "target_url": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=36", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 1, "method": "GET", "form_items": {"picid": "36"}}
+{"url": "https://app1.com/pictures/view.php?picid=37", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 1, "method": "GET", "form_items": {"picid": "37"}}
+{"url": "https://app1.com/pictures/view.php?picid=37", "target_url": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=37", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 1, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=38", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 1, "method": "GET", "form_items": {"picid": "38"}}
+{"url": "https://app1.com/pictures/view.php?picid=38", "target_url": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=35", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 1, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=36", "target_url": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=36", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 1, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=38", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 1, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=40", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 1, "method": "GET", "form_items": {"picid": "40"}}
+{"url": "https://app1.com/pictures/view.php?picid=40", "target_url": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=40", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 1, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=41", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 1, "method": "GET", "form_items": {"picid": "41"}}
+{"url": "https://app1.com/pictures/view.php?picid=42", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 1, "method": "GET", "form_items": {"picid": "42"}}
+{"url": "https://app1.com/pictures/view.php?picid=42", "target_url": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=42", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 1, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=43", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 1, "method": "GET", "form_items": {"picid": "43"}}
+{"url": "https://app1.com/pictures/view.php?picid=43", "target_url": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=44", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 1, "method": "GET", "form_items": {"picid": "44"}}
+{"url": "https://app1.com/pictures/view.php?picid=41", "target_url": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=41", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 1, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=43", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 1, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=44", "target_url": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=44", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 1, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/purchased.php", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/pictures/purchased.php", "target_url": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_itarch.php", "seed": 2, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=17", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 2, "method": "GET", "form_items": {"picid": "17"}}
+{"url": "https://app1.com/pictures/view.php?picid=17", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=17", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 2, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=21", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=20", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 2, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=21", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 2, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=16", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 2, "method": "GET", "form_items": {"picid": "16"}}
+{"url": "https://app1.com/pictures/view.php?picid=16", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=16", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 2, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=32", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 2, "method": "GET", "form_items": {"picid": "32"}}
+{"url": "https://app1.com/pictures/view.php?picid=32", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=30", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 2, "method": "GET", "form_items": {"picid": "30"}}
+{"url": "https://app1.com/pictures/view.php?picid=32", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 2, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=30", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=34", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 2, "method": "GET", "form_items": {"picid": "34"}}
+{"url": "https://app1.com/pictures/view.php?picid=30", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 2, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=34", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=34", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 2, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/users/view.php?userid=1", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/user{"url": "https://app1.com/tos.php", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/tos.php", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": ""}}
+{"url": "https://app1.com/", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": ""}}
+{"url": "https://app1.com/calendar.php", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/calendar.php", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": ""}}
+{"url": "https://app1.com/users/sample.php?userid=1", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/users/sample.php", "seed": 3, "method": "GET", "form_items": {"userid": "1"}}
+{"url": "https://app1.com/users/sample.php?userid=1", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": ""}}
+{"url": "https://app1.com/cart/review.php", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/cart/review.php", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": ""}}
+{"url": "https://app1.com/cart/review.php", "target_url": "https://app1.com/cart/action.php?action=delete", "seed": 3, "method": ["POST"], "form_items": {"query": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=7", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 3, "method": "GET", "form_items": {"picid": "7"}}
+{"url": "https://app1.com/pictures/view.php?picid=7", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=7", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 3, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/users/view.php?userid=1", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/users/view.php", "seed": 3, "method": "GET", "form_items": {"userid": "1"}}
+{"url": "https://app1.com/users/view.php?userid=1", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": ""}}
+{"url": "https://app1.com/users/register.php", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/users/register.php", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"username": "", "firstname": "", "lastname": "", "query": "", "password": "", "againpass": ""}}
+{"url": "https://app1.com/users/register.php", "target_url": "https://app1.com/users/register.php", "seed": 3, "method": ["POST"], "form_items": {"username": "", "firstname": "", "lastname": "", "query": "", "password": "", "againpass": ""}}
+{"url": "https://app1.com/passcheck.php", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/passcheck.php", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": "", "password": ""}}
+{"url": "https://app1.com/passcheck.php", "target_url": "https://app1.com/passcheck.php", "seed": 3, "method": ["POST"], "form_items": {"query": "", "password": ""}}
+{"url": "https://app1.com/users/login.php", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/users/login.php", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"]ems": {"query": ""}}
+{"url": "https://app1.com/users/view.php?userid=4", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/users/view.php", "seed": 1, "method": "GET", "form_items": {"userid": "4"}}
+{"url": "https://app1.com/users/similar.php", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/users/similar.php", "target_url": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"query": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=29", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 1, "method": "GET", "form_items": {"picid": "29"}}
+{"url": "https://app1.com/pictures/view.php?picid=26", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/users/view.php?userid=4", "target_url": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"query": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=29", "target_url": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=29", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 1, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php", "seed": 1, "method": "GET", "form_items": {"picid": "26"}}
+{"url": "https://app1.com/pictures/view.php?picid=26", "target_url": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=24", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 1, "method": "GET", "form_items": {"picid": "24"}}
+{"url": "https://app1.com/pictures/view.php?picid=24", "target_url": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=26", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 1, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=24", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 1, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=23", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 1, "method": "GET", "form_items": {"picid": "23"}}
+{"url": "https://app1.com/pictures/view.php?picid=34", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 1, "method": "GET", "form_items": {"picid": "34"}}
+{"url": "https://app1.com/pictures/view.php?picid=34", "target_url": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=33", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 1, "method": "GET", "form_items": {"picid": "33"}}
+{"url": "https://app1.com/pictures/view.php?picid=33", "target_url": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=17", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 1, "method": "GET", "form_items": {"picid": "17"}}
+{"url": "https://app1.com/pictures/view.php?picid=23", "target_url": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=34", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 1, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=33", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 1, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=17", "target_url": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=17", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 1, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=16", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 1, "method": "GET", "form_items": {"picid": "16"}}
+{"url": "https://app1.com/pictures/view.php?picid=16", "target_url": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=23", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 1, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=16", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 1, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=19", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 1, "method": "GET", "form_items": {"picid": "19"}}
+{"url": "https://app1.com/pictures/view.php?picid=28", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 1, "method": "GET", "form_items": {"picid": "28"}}
+{"url": "https://app1.com/pictures/view.php?picid=28", "target_url": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=25", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 1, "method": "GET", "form_items": {"picid": "25"}}
+{"url": "https://app1.com/pictures/view.php?picid=22", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 1, "method": "GET", "form_items": {"picid": "22"}}
+{"url": "https://app1.com/pictures/view.php?picid=22", "target_url": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=22", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 1, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=19", "target_url": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=28", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 1, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=25", "target_url": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=25", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 1, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=21", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 1, "method": "GET", "form_items": {"picid": "21"}}
+{"url": "https://app1.com/pictures/view.php?picid=19", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 1, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=21", "target_url": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=21", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 1, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=20", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 1, "method": "GET", "form_items": {"picid": "20"}}
+{"url": "https://app1.com/pictures/view.php?picid=20", "target_url": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=18", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 1, "method": "GET", "form_items": {"picid": "18"}}
+{"url": "https://app1.com/pictures/view.php?picid=18", "target_url": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=32", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 1, "method": "GET", "form_items": {"picid": "32"}}
+{"url": "https://app1.com/pictures/view.php?picid=32", "target_url": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=31", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 1, "method": "GET", "form_items": {"picid": "31"}}
+{"url": "https://app1.com/pictures/view.php?picid=20", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 1, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=18", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 1, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=32", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 1, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=31", "target_url": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=31", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 1, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=30", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 1, "method": "GET", "form_items": {"picid": "30"}}
+{"url": "https://app1.com/pictures/view.php?picid=27", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 1, "method": "GET", "form_items": {"picid": "27"}}
+{"url": "https://app1.com/pictures/view.php?picid=27", "target_url": "https://app, "form_items": {"username": "", "query": "", "password": ""}}
+{"url": "https://app1.com/users/login.php", "target_url": "https://app1.com/users/login.php", "seed": 3, "method": ["POST"], "form_items": {"username": "", "query": "", "password": ""}}
+{"url": "https://app1.com/guestbook.php", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/guestbook.php", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"comment": "", "query": "", "name": ""}}
+{"url": "https://app1.com/guestbook.php", "target_url": "https://app1.com/guestbook.php", "seed": 3, "method": ["POST"], "form_items": {"comment": "", "query": "", "name": ""}}
+{"url": "https://app1.com/users/home.php", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/pictures/recent.php", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/pictures/recent.php", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": ""}}
+{"url": "https://app1.com/pictures/upload.php", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"target_url": "https://app1.com/pictures/search.php", "form_items": {"MAX_FILE_SIZE": "", "name": "", "title": "", "price": "", "pic": "", "tag": "", "query": ""}, "url": "https://app1.com/pictures/upload.php", "seed": 3, "file_items": {"pic": ""}, "method": ["get"]}
+{"url": "https://app1.com/users/home.php", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": "", "PLAY": "", "QUALITY": "", "LOOP": "", "MOVIE": ""}}
+{"target_url": "https://app1.com/pictures/upload.php", "form_items": {"MAX_FILE_SIZE": "", "name": "", "title": "", "price": "", "pic": "", "tag": "", "query": ""}, "url": "https://app1.com/pictures/upload.php", "seed": 3, "file_items": {"pic": ""}, "method": ["POST"]}
+{"url": "https://app1.com/pictures/view.php?picid=35", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 3, "method": "GET", "form_items": {"picid": "35"}}
+{"url": "https://app1.com/pictures/view.php?picid=36", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 3, "method": "GET", "form_items": {"picid": "36"}}
+{"url": "https://app1.com/pictures/view.php?picid=36", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=37", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 3, "method": "GET", "form_items": {"picid": "37"}}
+{"url": "https://app1.com/pictures/view.php?picid=38", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 3, "method": "GET", "form_items": {"picid": "38"}}
+{"url": "https://app1.com/pictures/view.php?picid=38", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=39", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 3, "method": "GET", "form_items": {"picid": "39"}}
+{"url": "https://app1.com/pictures/view.php?picid=39", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=40", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 3, "method": "GET", "form_items": {"picid": "40"}}
+{"url": "https://app1.com/pictures/view.php?picid=35", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=36", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 3, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=37", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=37", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 3, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=38", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 3, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=39", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 3, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=40", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=40", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 3, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=35", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 3, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=42", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 3, "method": "GET", "form_items": {"picid": "42"}}
+{"url": "https://app1.com/pictures/view.php?picid=43", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 3, "method": "GET", "form_items": {"picid": "43"}}
+{"url": "https://app1.com/pictures/view.php?picid=44", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 3, "method": "GET", "form_items": {"picid": "44"}}
+{"url": "https://app1.com/pictures/view.php?picid=44", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/purchased.php", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/pictures/purchased.php", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": ""}}
+{"url": "https://app1.com/users/view.php?userid=11", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/users/view.php", "seed": 3, "method": "GET", "form_items": {"userid": "11"}}
+{"url": "https://app1.com/users/view.php?userid=11", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": ""}}
+{"url": "https://app1.com/users/similar.php", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/users/similar.php", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=43", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=43", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 3, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=44", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 3, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/admin/index.php?page=login", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/admin/index.php", "seed": 3, "method": "GET", "form_items": {"page": "login"}}
+{"url": "https://app1.com/admin/index.php?page=login", "target_url": "https://app1.com/admin/index.php?page=login", "seed": 3, "method": ["POST"], "form_items": {"password": "", "adminname": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=42", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=32", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 3, "method": "GET", "form_items": {"picid": "32"}}
+{"url": "https://app1.com/pictures/view.php?picid=32", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=30", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 3, "method": "GET", "form_items": {"picid": "30"}}
+{"url": "https://app1.com/pictures/view.php?picid=30", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=25", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 3, "method": "GET", "form_items": {"picid": "25"}}
+{"url": "https://app1.com/pictures/view.php?picid=42", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 3, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=32", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 3, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=30", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 3, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=25", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=25", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 3, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=17", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 3, "method": "GET", "form_items": {"picid": "17"}}
+{"url": "https://app1.com/pictures/view.php?picid=33", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 3, "method": "GET", "form_items": {"picid": "33"}}
+{"url": "https://app1.com/pictures/view.php?picid=27", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 3, "method": "GET", "form_items": {"picid": "27"}}
+{"url": "https://app1.com/pictures/view.php?picid=27", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=21", "seed": 3, "method": "C1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=30", "target_url": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=30", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 1, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=27", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 1, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/users/view.php?userid=1", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/users/view.php", "seed": 1, "method": "GET", "form_items": {"userid": "1"}}
+{"url": "https://app1.com/users/view.php?userid=1", "target_url": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"query": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=39", "seed": 1, "method": "COOKIE", "form_items": {"PHPSESSID": "jjrd1i68ir7kvmqqv6cu77m0n2"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 1, "method": "GET", "form_items": {"picid": "39"}}
+{"url": "https://app1.com/pictures/view.php?picid=39", "target_url": "https://app1.com/pictures/search.php", "seed": 1, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=39", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 1, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+OOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/pictures/view.php?picid=17", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=17", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 3, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=33", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=27", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 3, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php", "seed": 3, "method": "GET", "form_items": {"picid": "21"}}
+{"url": "https://app1.com/pictures/view.php?picid=21", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=41", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 3, "method": "GET", "form_items": {"picid": "41"}}
+{"url": "https://app1.com/pictures/view.php?picid=41", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=33", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 3, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=21", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 3, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=41", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 3, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=14", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 3, "method": "GET", "form_items": {"picid": "14"}}
+{"url": "https://app1.com/pictures/view.php?picid=14", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/users/view.php?userid=4", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/users/view.php", "seed": 3, "method": "GET", "form_items": {"userid": "4"}}
+{"url": "https://app1.com/pictures/view.php?picid=15", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 3, "method": "GET", "form_items": {"picid": "15"}}
+{"url": "https://app1.com/pictures/view.php?picid=15", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=15", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 3, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=22", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 3, "method": "GET", "form_items": {"picid": "22"}}
+{"url": "https://app1.com/pictures/view.php?picid=22", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=14", "target_url": "https://app1.com/comments/preview_comments/view.php", "seed": 2, "method": "GET", "form_items": {"userid": "1"}}
+{"url": "https://app1.com/users/view.php?userid=1", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"query": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=39", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 2, "method": "GET", "form_items": {"picid": "39"}}
+{"url": "https://app1.com/pictures/view.php?picid=39", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=39", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 2, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=33", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 2, "method": "GET", "form_items": {"picid": "33"}}
+{"url": "https://app1.com/pictures/view.php?picid=29", "seed": 2, "method": "COOKIE", "form_items": {"PHPSESSID": "30746gpdqngqh9ovuq6c1pjvi4"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 2, "method": "GET", "form_items": {"picid": "29"}}
+{"url": "https://app1.com/pictures/view.php?picid=29", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=33", "target_url": "https://app1.com/pictures/search.php", "seed": 2, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=33", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 2, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=29", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 2, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+.php", "seed": 3, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/users/view.php?userid=4", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=22", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 3, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=29", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 3, "method": "GET", "form_items": {"picid": "29"}}
+{"url": "https://app1.com/pictures/view.php?picid=29", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=29", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 3, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=34", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 3, "method": "GET", "form_items": {"picid": "34"}}
+{"url": "https://app1.com/pictures/view.php?picid=26", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/pictures/view.php?picid=34", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=34", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 3, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php", "seed": 3, "method": "GET", "form_items": {"picid": "26"}}
+{"url": "https://app1.com/pictures/view.php?picid=24", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 3, "method": "GET", "form_items": {"picid": "24"}}
+{"url": "https://app1.com/pictures/view.php?picid=20", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 3, "method": "GET", "form_items": {"picid": "20"}}
+{"url": "https://app1.com/pictures/view.php?picid=20", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=20", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 3, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=26", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=26", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 3, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=24", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=24", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 3, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=28", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 3, "method": "GET", "form_items": {"picid": "28"}}
+{"url": "https://app1.com/pictures/view.php?picid=23", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 3, "method": "GET", "form_items": {"picid": "23"}}
+{"url": "https://app1.com/pictures/view.php?picid=23", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=23", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 3, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=28", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=28", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 3, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=18", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/pictures/view.php?picid=16", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 3, "method": "GET", "form_items": {"picid": "16"}}
+{"url": "https://app1.com/users/view.php?userid=10", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/users/view.php", "seed": 3, "method": "GET", "form_items": {"userid": "10"}}
+{"url": "https://app1.com/users/view.php?userid=10", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=13", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 3, "method": "GET", "form_items": {"picid": "13"}}
+{"url": "https://app1.com/pictures/view.php?picid=13", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=10", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 3, "method": "GET", "form_items": {"picid": "10"}}
+{"url": "https://app1.com/pictures/view.php?picid=10", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php", "seed": 3, "method": "GET", "form_items": {"picid": "18"}}
+{"url": "https://app1.com/pictures/view.php?picid=18", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=16", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=13", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 3, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=10", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 3, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=31", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 3, "method": "GET", "form_items": {"picid": "31"}}
+{"url": "https://app1.com/pictures/view.php?picid=18", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 3, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=16", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 3, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=31", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=31", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 3, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=19", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 3, "method": "GET", "form_items": {"picid": "19"}}
+{"url": "https://app1.com/users/view.php?userid=2", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/users/view.php", "seed": 3, "method": "GET", "form_items": {"userid": "2"}}
+{"url": "https://app1.com/pictures/view.php?picid=11", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 3, "method": "GET", "form_items": {"picid": "11"}}
+{"url": "https://app1.com/pictures/view.php?picid=11", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=19", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=19", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 3, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/users/view.php?userid=2", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=11", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 3, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=12", "seed": 3, "method": "COOKIE", "form_items": {"PHPSESSID": "0dotleend7hac9jfsd26k0so73"}}
+{"url": "https://app1.com/pictures/view.php", "seed": 3, "method": "GET", "form_items": {"picid": "12"}}
+{"url": "https://app1.com/pictures/view.php?picid=12", "target_url": "https://app1.com/pictures/search.php", "seed": 3, "method": ["get"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/pictures/view.php?picid=12", "target_url": "https://app1.com/comments/preview_comment.php", "seed": 3, "method": ["POST"], "form_items": {"query": "", "picid": "", "text": ""}}
+{"url": "https://app1.com/admin/index.php?page=home", "seed": 0, "method": "COOKIE", "form_items": {"session": "18", " PHPSESSID": "9ip4trfd4pbrdktfr9f3ks9to6"}}
+{"url": "https://app1.com/admin/index.php", "seed": 0, "method": "GET", "form_items": {"page": "home"}}
+{"url": "https://app1.com/admin/index.php?page=create", "seed": 0, "method": "COOKIE", "form_items": {"session": "18", " PHPSESSID": "9ip4trfd4pbrdktfr9f3ks9to6"}}
+{"url": "https://app1.com/admin/index.php", "seed": 0, "method": "GET", "form_items": {"page": "create"}}
