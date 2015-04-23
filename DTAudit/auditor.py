@@ -238,6 +238,10 @@ class auditor(JSONPipe):
                 if endpoint['files'] and key in endpoint['files']:
                     bundle.pop(key, None)
 
+            # print method, bundle, files
+
+            r = None
+
             try:
 
                 if method == 'GET':
@@ -252,6 +256,12 @@ class auditor(JSONPipe):
                         r = self.http.post(target, data=bundle, verify=False)
             except requests.exceptions.InvalidURL as e:
                 print e
+                pass
+            except requests.exceptions.ConnectionError as e:
+                print e
+                pass
+            except:
+                print "Unexpected error:", sys.exc_info()[0]
                 pass
 
             exploitable, exp = self.verify(r, target)
@@ -281,6 +291,7 @@ class auditor(JSONPipe):
                     'fileFields': None
                 })
             elif method == 'COOKIE':
+                return False, []
                 exploit.append({
                     'method': method,
                     'url': target,
@@ -306,6 +317,9 @@ class auditor(JSONPipe):
     def verify(self, response, referer):
 
         exploit = []
+
+        if response is None:
+            return False, []
 
         if self.see_root(response.text):
             return True, exploit
