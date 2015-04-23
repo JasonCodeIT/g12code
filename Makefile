@@ -26,7 +26,7 @@ payload:
 
 app%:
 	python audit.py --action=robot --seeds=data/seeds/public/$@.json --endpoints=output/endpoints/$@.json
-	python audit.py --action=auditor --endpoints=output/endpoints/$@.json --payloads=output/payloads.json --exploits=output/exploits/$@.json
+	python audit.py --action=auditor --seeds=data/seeds/public/$@.json --endpoints=output/endpoints/$@.json --payloads=output/payloads.json --exploits=output/exploits/$@.json
 	python audit.py --action=automate --exploits=output/exploits/$@.json --script=output/script.json
 
 clean:

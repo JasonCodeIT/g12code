@@ -129,8 +129,6 @@ class auditor(JSONPipe):
                         'exploit': exploit
                     })
                     print
-                    print auth
-                    print exploit
                     print Colors.OKGREEN, " -- found exploit with payload:", payload, Colors.ENDC
                     print " -- skip other payload"
                     break
