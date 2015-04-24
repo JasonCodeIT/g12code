@@ -19,7 +19,7 @@ class ScannerSpider(CrawlSpider):
     CONTENT_TYPE = None
     # matching app1.com/calendar.php?date= causing infinite follow
     # matching logout pages so scrapy will not logout from a session
-    re1 = '=[1-2][0-9]{9}|login|logout|page=[0-9]{2}|upgrader|updater|delete|remove'
+    re1 = '=[1-2][0-9]{9}|logout|page=[0-9]{2}|upgrader|updater|delete|remove'
 
     rules = (
         Rule(LxmlLinkExtractor(unique=True, deny=re1), callback='parse_item', follow=False),

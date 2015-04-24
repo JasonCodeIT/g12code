@@ -6,6 +6,8 @@ import sys, getopt
 from classes.robot import Robot
 from twisted.internet import reactor
 from scrapy import log
+from DTAudit.util import Hunter
+import json
 
 
 def main(argv):
@@ -47,12 +49,31 @@ def main(argv):
                           script=script)
         audit.launch()
     elif action == 'robot':
-        spider = Robot(seeds)
-        outputs = spider.crawl()
-        log.start(loglevel=log.DEBUG)
-        reactor.run()
 
-        spider.transform(outputs, endpoints)
+        seed_idx = 0
+        count = 0
+        entrances = json.load(open(seeds, 'r'))
+        holes = []
+
+        for seed in entrances:
+            if seed['auth'] is not None and 'grabs' in seed['auth']:
+                hunter = Hunter(seed, seed_idx)
+                holes += hunter.hunt()
+                count += 1
+            seed_idx += 1
+
+            if 'extra_endpoints' in seed:
+                holes += seed['extra_endpoints']
+
+        spider = Robot(seeds)
+        outputs = []
+        if count < len(entrances):
+            outputs = spider.crawl()
+            log.start(loglevel=log.DEBUG)
+            reactor.run()
+
+
+        spider.transform(outputs, endpoints, appends=holes)
 
     elif action == 'payload':
         plant = factory()
@@ -63,8 +84,8 @@ def main(argv):
         worker.launch([endpoints, payloads], exploits)
 
     elif action == 'automate':
-        auto = automator('data/script.py', 'data/post.py')
-        auto.launch([exploits], script)
+        auto = automator('data/script.py', 'data/post.py', script)
+        auto.launch([exploits], script + "/listing.json")
 
 
 if __name__ == '__main__':

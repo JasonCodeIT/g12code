@@ -10,6 +10,25 @@
         "password": "admin"
       }
     },
-    "start_url": "https://app11.com/ajaxfilemanager.php"
+    "start_url": "https://app11.com/ajaxfilemanager.php",
+    "extra_endpoints": [
+      {
+        "seed": 0,
+        "url": "https://app11.com/ajax_get_file_listing.php",
+        "target": "https://app11.com/ajax_get_file_listing.php",
+        "method": "GET",
+        "params": {
+          "limit": 10,
+          "view": "thumbnail",
+          "search": 1,
+          "search_name": "",
+          "search_recursively": 0,
+          "search_mtime_from": "",
+          "search_mtime_to": "",
+          "search_folder": "./"
+        },
+        "files": null
+      }
+    ]
   }
 ]

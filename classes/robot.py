@@ -19,6 +19,8 @@ from twisted.internet import reactor
 from scrapy.crawler import Crawler
 from scrapy.settings import Settings
 
+from DTAudit.util import Hunter
+
 from scrapy import log
 
 
@@ -58,28 +60,36 @@ class Robot(object):
 
         return hashlib.sha224(string).hexdigest()
 
-    def transform(self, outputs, endpoint_file):
+    def transform(self, outputs, endpoint_file, appends=None):
         endpoints = []
         hashes = []
-        for scrapy_out_file in outputs:
-            entries = open(scrapy_out_file, 'r').readlines()
-            for entry in entries:
-                #log.err(entry)
-                entry = json.loads(entry)
-                endpoint = {
-                    'seed': entry['seed'],
-                    'url': entry['url'],
-                    'target': entry['target_url'] if 'target_url' in entry else entry['url'],
-                    'method': entry['method'].upper(),
-                    'params': entry['form_items'],
-                    'files': entry['file_items'] if 'file_items' in entry else None
-                }
+        if outputs:
+            for scrapy_out_file in outputs:
+                entries = open(scrapy_out_file, 'r').readlines()
+                for entry in entries:
+                    #log.err(entry)
+                    entry = json.loads(entry)
+                    endpoint = {
+                        'seed': entry['seed'],
+                        'url': entry['url'],
+                        'target': entry['target_url'] if 'target_url' in entry else entry['url'],
+                        'method': entry['method'].upper(),
+                        'params': entry['form_items'],
+                        'files': entry['file_items'] if 'file_items' in entry else None
+                    }
 
+                    hash = self.signature(endpoint)
+
+                    if hash not in hashes:
+                        endpoints.append(endpoint)
+                        hashes.append(hash)
+        if appends:
+            for endpoint in appends:
                 hash = self.signature(endpoint)
-
                 if hash not in hashes:
                     endpoints.append(endpoint)
                     hashes.append(hash)
+
         json.dump(endpoints, open(endpoint_file, 'w'), indent=True)
 
     def spider_closing(self):
@@ -104,10 +114,15 @@ class Robot(object):
         outputs = []
 
         for seed in data:
+
+            if seed['auth'] is not None and 'grabs' in seed['auth']:
+                continue
+
             self.seed_idx += 1 # Counter
             self.starturl = None
             self.formdata = None
             self.contenttype = None
+
 
             if seed['auth'] is not None:
                 self.formdata = seed['auth']['params']
@@ -120,6 +135,7 @@ class Robot(object):
             outputs.append(output_file)
             if os.path.isfile(output_file):
                 os.remove(output_file)
+
 
             # Start Crawling All Below
 

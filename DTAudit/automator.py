@@ -23,9 +23,10 @@ class automator(JSONPipe):
     """Generate selenium scripts that automatically validate given exploits.
     """
 
-    def __init__(self, template1, template2):
+    def __init__(self, template1, template2, script_dir):
         self.template1 = template1
         self.template2 = template2
+        self.script_dir = script_dir
 
 
     def process(self, incomings):
@@ -36,7 +37,7 @@ class automator(JSONPipe):
         return : a list of paths to the generated selenium scripts
         """
 
-        script_folder = "output/scripts"
+        script_folder = self.script_dir
         if not os.path.exists(script_folder):
             os.makedirs(script_folder)
 

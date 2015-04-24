@@ -155,6 +155,7 @@ class auditor(JSONPipe):
             self.session[seed] = {
                 "login": False,
                 "token": None,
+                "auth_endpoint": None
             }
         else:
             return self.session[seed]['auth_endpoint']
